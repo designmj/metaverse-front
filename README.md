@@ -1,6 +1,6 @@
 
 # 🖥 학습 및 전시 플랫폼 HIP
-![표지 ___](https://github.com/user-attachments/assets/4252dafa-2fa0-4692-b6b6-70071dac734a)
+
 
 ## 📕 Introduce
 - HIP은 SW아카데미 학생들의 학습 및 프로젝트 전시를 위한 플랫폼입니다.
@@ -28,7 +28,5 @@
 ## 📘📙 Stack
 <img alt="image" src="https://github.com/user-attachments/assets/6cfab536-866a-4ceb-b520-1c3efcf2ca23">
 
-
-zjalt
 
 

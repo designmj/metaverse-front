@@ -14,7 +14,17 @@
       <ion-button routerLink="/introduce-metaverse" routerDirection="root" fill="clear">
         <ion-label>아카데미 소개</ion-label>
       </ion-button>
-    
+      <!-- ngIf 이용하여 메뉴 관리 -->
+      <ng-container *ngIf="isLoggedIn">
+        <!-- <a href="/studyroom" target="_blank">
+          <ion-button routerDirection="root" fill="clear">
+            <ion-label>학습룸</ion-label>
+          </ion-button>
+        </a> -->
+        <div class="btn-container">
+          <a data-animation="ripple" a href="/studyroom" target="_blank" class="studyroom-btn">학습룸</a>
+        </div>
+      </ng-container>
     </div>
 
     <div class="menu-right">
@@ -24,6 +34,7 @@
                   fill="clear" 
                   *ngIf="!isLoggedIn">
         <ion-label class="login-text">로그인</ion-label>
+      
       </ion-button>
       
       <ion-button size="small" 
@@ -33,14 +44,7 @@
                   *ngIf="!isLoggedIn">
         <ion-label class="login-text">회원가입</ion-label>
       </ion-button>
-      <!-- ngIf 이용하여 메뉴 관리 -->
-      <ng-container *ngIf="isLoggedIn">
-        <a href="/studyroom" target="_blank">
-          <ion-button routerDirection="root" fill="clear">
-            <ion-label>학습룸</ion-label>
-          </ion-button>
-        </a>
-      </ng-container>
+      
       <ion-button class="login" fill="clear" *ngIf="isLoggedIn">
         <ion-icon name="person"></ion-icon>
         <ion-label class="login-text">마이페이지</ion-label>
@@ -50,6 +54,7 @@
                   class="login" 
                   fill="clear" 
                   *ngIf="isLoggedIn">
+        <!-- <ion-icon name="log-out-outline"></ion-icon> -->
         <ion-label class="login-text">로그아웃하기</ion-label>
       </ion-button>
     </div>

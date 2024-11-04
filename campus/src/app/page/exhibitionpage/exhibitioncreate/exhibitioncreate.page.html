@@ -19,7 +19,7 @@
   </div>
 
   <div class="maincontent shadow-box">
-    <form (ngSubmit)="onSubmit()">
+    <form (ngSubmit)="onSubmit()" class="project-form">
       <div class="form-group">
         <label for="exhibition_title" class="align-label"><i class="material-icons">assignment</i> 프로젝트 이름:</label>
         <input type="text" id="exhibition_title" [(ngModel)]="exhibition_title" name="exhibition_title" required />
@@ -97,8 +97,9 @@
           <video [src]="outputVideoPreview" controls style="width: 100%; max-width: 1920px; margin-top: 10px;"></video>
         </div>
       </div>
-
-      <button type="submit">제출</button>
+      <div class="btn-container">
+        <button type="submit" class="submit-btn">제출</button>
+      </div>
     </form>
   </div>
 </ion-content>

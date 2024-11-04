@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewEncapsulation } from '@angular/core';
 import { ExhibitionService } from '../../../services/exhibition/exhibitionservice.service';
 import {FormsModule} from "@angular/forms";
 
@@ -9,7 +9,8 @@ import {FormsModule} from "@angular/forms";
   imports: [
     FormsModule
   ],
-  styleUrls: ['./exhibition.component.scss']
+  styleUrls: ['./exhibition.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ExhibitionComponent {
   projectName: string = '';

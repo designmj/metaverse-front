@@ -75,9 +75,12 @@ ion-searchbar.title-searchbar{
 //로그인 버튼
 
 ion-button.login{
-  --color: #000000;
+  --color: rgba(8,8,8,0.8);
 }
 
+ion-button.login .button-native{
+  padding: 0;
+}
 .login:hover, .login:active{
   --color:#9e65ff;
   --background-color: #976BEE;
@@ -90,8 +93,48 @@ ion-button.login{
   cursor: pointer;
 }
 
+//학습룸 버튼
+.btn-container {
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 40px;
+  width: 100px;
+  margin: auto;
+  font-size: 14px;
+  margin-left: 10px;
+}
+*[data-animation="ripple"] {
+  height: 100%;
+  width: 100%;
+  display: block;
+  outline: none;
+  padding: 20px;
+  color: #fff;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #6e8efb, #a777e3);
+  box-sizing: border-box;
+  text-align: center;
+  line-height: 0px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-decoration: none;
+  box-shadow: 0 5px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  /*border-radius: 50px;*/
+  -webkit-tap-highlight-color: transparent;
+  border-radius: 5px;
+}
 
+*[data-animation="ripple"]:focus {
+  outline: none;
+}
 
+*[data-animation="ripple"]::selection {
+  background: transparent;
+  pointer-events: none;
+}
 
 ion-header{
   --box-shadow: none;
@@ -139,7 +182,9 @@ ion-label:hover{
   justify-content: flex-end;
 
 }
-
+.menu-right ion-button{
+  padding: 0;
+}
 //회원가입
 //모달
 ion-modal{
@@ -246,3 +291,5 @@ button{
 .custom-modal{
   --border-radius: 50px;
 }
+
+
