@@ -59,7 +59,7 @@ export class ExhibitionService {
   // Read: 전시물 목록 가져오기 (메인페이지) - 프로젝트이름, 팀이름, 기수, 썸네일
   getExhibitions(): Observable<any[]> {
     const headers = this.validateToken()
-    return this.http.get<any[]>(`${this.apiUrl}/exhibitions`, { headers });
+    return this.http.get<any[]>(`${this.apiUrl}/exhibition-intro`, { headers });
   }
 
   // Presigned URL 요청 메소드
