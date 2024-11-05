@@ -34,7 +34,7 @@ export class ExhibitionmainPage implements OnInit {
         if (this.exhibitions && Array.isArray(this.exhibitions)) {
             this.exhibitions.forEach(item => {
                 console.log('전시관 ID:', item.exhibition.exhibition_id); // exhibition_id를 로그로 출력
-                this.loadImage(item.exhibition.exhibition_id); // exhibition.id를 사용하여 이미지 로드
+                // this.loadImage(item.exhibition.exhibition_id); // exhibition.id를 사용하여 이미지 로드
             });
         } else {
             console.error('전시관 데이터가 없습니다.');
@@ -49,7 +49,7 @@ export class ExhibitionmainPage implements OnInit {
 
   navigateToExhibition(exhibitionId: number) {
     console.log('navigateToExhibition called:', exhibitionId);
-    this.loadImage(exhibitionId); // 이미지 로드 호출
+    // this.loadImage(exhibitionId); // 이미지 로드 호출
     this.router.navigate(['/exhibition', exhibitionId]);
   }
 
