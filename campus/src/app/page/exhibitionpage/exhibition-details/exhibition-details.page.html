@@ -28,7 +28,12 @@
         <ion-icon name="bulb-outline" class="icons"></ion-icon> Introduce
       </div>
       <ul>
-        <li class="introduce-content" *ngFor="let intro of exhibitionDetails.intro">{{ intro }}</li>
+        <div *ngIf="exhibitionDetails.exhibition.exhibitionIntros?.length > 0; ">
+          <li *ngFor="let intro of exhibitionDetails.exhibition.exhibitionIntros">
+            {{ intro.introduce }} 
+          </li>
+        </div>
+        
       </ul>
       <ion-item class="boundary"></ion-item>
 
