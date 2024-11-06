@@ -16,11 +16,14 @@
     </ion-item>
 
     <ion-list [ngClass]="{'slide-down': classesVisible, 'slide-up': !classesVisible}" *ngIf="classesVisible">
-      <ion-item button (click)="navigateTo('classmy')">
-        <ion-label>내 클래스</ion-label>
+      <ion-item button (click)="navigateTo('coursemy')">
+        <ion-label>학습하기</ion-label>
       </ion-item>
-      <ion-item button (click)="navigateTo('classsignup')">
+      <ion-item button (click)="navigateTo('coursejoin')">
         <ion-label>클래스 신청</ion-label>
+      </ion-item>
+      <ion-item button (click)="createCourse()">
+        <ion-label>클래스 생성[관리자]</ion-label>
       </ion-item>
     </ion-list>
 

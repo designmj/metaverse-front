@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import { IonicModule } from '@ionic/angular';
+import { IonicModule, ModalController } from '@ionic/angular';
 import {RouterLink, RouterLinkActive} from "@angular/router";
 import {NgForOf} from "@angular/common";
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { CourseCreateModalComponent } from '../course-create-modal/course-create-modal.component';
 
 @Component({
   selector: 'app-sidemenu',
@@ -23,7 +24,8 @@ export class SidemenuComponent {
   projectsVisible = false;
 
 
-  constructor(private router: Router) {}
+  constructor(    private modalController: ModalController,
+    private router: Router) {}
 
   toggleClasses() {
     this.classesVisible = !this.classesVisible;
@@ -34,6 +36,14 @@ export class SidemenuComponent {
 
   navigateTo(page: string) {
     this.router.navigate([page]);
+  }
+
+  async createCourse() {
+    const modal = await this.modalController.create({
+      component: CourseCreateModalComponent,
+      cssClass: 'modal',
+    });
+    return await modal.present();
   }
 }
 
