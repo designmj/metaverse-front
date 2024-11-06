@@ -27,13 +27,12 @@ export class JoinpagePage implements OnInit {
     this.userRole = this.router.getCurrentNavigation()?.extras.state?.['user_role'];
 
     this.registerForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
       user_name: ['', Validators.required],
       nick_name: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
       user_role: [this.userRole || '', Validators.required],
-      id: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(20)]],
       password: ['', [Validators.required, Validators.minLength(7), Validators.maxLength(20)]],
       passwordConfirm: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
     }, {validators: this.passwordMatchValidator});
   }
 
@@ -102,7 +101,6 @@ export class JoinpagePage implements OnInit {
       user_name: '이름',
       nick_name: '닉네임',
       user_role: '역할',
-      id: '아이디',
       password: '비밀번호',
       passwordConfirm: '비밀번호 확인',
       email: '이메일',

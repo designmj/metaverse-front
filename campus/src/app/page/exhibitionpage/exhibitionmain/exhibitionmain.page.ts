@@ -22,35 +22,28 @@ export class ExhibitionmainPage implements OnInit {
     this.loadExhibitions();
   }
 
-  loadExhibitions() {
-    this.exhibitionService.getExhibitions().subscribe(
-      (response: any) => {
-        console.log('API 응답:', response); // 응답을 로그로 출력
-        
-        // 올바른 응답 구조에 따라 intro 속성을 사용
-        this.exhibitions = response.intro; // 'intro' 배열로 설정
-
-        // exhibitions가 정의되어 있는지 확인
-        if (this.exhibitions && Array.isArray(this.exhibitions)) {
-            this.exhibitions.forEach(item => {
-                console.log('전시관 ID:', item.exhibition.exhibition_id); // exhibition_id를 로그로 출력
-                // this.loadImage(item.exhibition.exhibition_id); // exhibition.id를 사용하여 이미지 로드
-            });
-        } else {
-            console.error('전시관 데이터가 없습니다.');
-        }
-      },
-      (error) => {
-        console.error('전시관 데이터 로딩 실패:', error);
+  async loadExhibitions() {
+    try {
+      const response: any = await this.exhibitionService.getExhibitions().toPromise();
+      console.log('API 응답:', response); // 응답을 로그로 출력
+      if (response && response.exhibitions) {
+        this.exhibitions = response.exhibitions;
+        // 각 전시의 이미지를 로드
+        this.exhibitions.forEach(exhibition => {
+          console.log('전시관 ID:', exhibition.exhibition_id); // ID를 로그로 출력
+          this.loadImage(exhibition.exhibition_id); // exhibition.id를 사용하여 이미지 로드
+        });
+      } else {
+        console.error('전시관 데이터가 없습니다.');
       }
-    );
-}
-
+    } catch (error) {
+      console.error('전시관 데이터 로딩 실패:', error);
+    }
+  }
 
   navigateToExhibition(exhibitionId: number) {
-    console.log('navigateToExhibition called:', exhibitionId);
-    // this.loadImage(exhibitionId); // 이미지 로드 호출
-    this.router.navigate(['/exhibition', exhibitionId]);
+    console.log('Navigating to exhibition with ID:', exhibitionId); // 디버깅 로그
+    this.router.navigate(['/exhibitionmain', exhibitionId]); // 세부 정보 페이지로 이동
   }
 
   changeTitle(newTitle: string) {

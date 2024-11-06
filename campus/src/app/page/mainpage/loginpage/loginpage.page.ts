@@ -26,13 +26,14 @@ export class LoginpagePage implements OnInit {
 
   ngOnInit() {
     this.loginForm = this.fb.group({
-      id: ['', Validators.required],
+      email: ['', Validators.required],
       password: ['', Validators.required]
     });
   }
 
   async onSubmit() {
     const loginData = this.loginForm.value; // 폼에서 아이디와 비밀번호를 가져옵니다.
+    console.log(loginData)
     try {
       // AuthService의 login 메서드를 호출하고 응답을 받아옵니다.
       const response = await firstValueFrom(this.authService.login(loginData));

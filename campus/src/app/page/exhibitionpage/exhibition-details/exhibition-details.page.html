@@ -10,16 +10,16 @@
   <ion-button [routerLink]="['/exhibition-update', exhibitionId]">수정하기</ion-button>
   <ion-button expand="block" color="danger" (click)="deleteExhibition()">전시물 삭제</ion-button>
   <div class="repcontent">
-    <div class="part1"><img class="title-image" [src]="exhibitionDetails.titleImage || '../../../assets/jpg/1.jpg'"></div>
+    <div class="part1"><img class="title-image" [src]="exhibitionDetails.exhibition.file_path || '../../../assets/jpg/1.jpg'"></div>
     <div class="part2">
       <br>
-      <div class="project-name">{{ exhibitionDetails.title }}</div>
+      <div class="project-name">{{ exhibitionDetails.exhibition.exhibition_title }}</div>
       <br>
       <br>
       <br>
       <br>
-      <div class="team-name">{{ exhibitionDetails.teamName }}</div>
-      <div class="class-name">{{ exhibitionDetails.className }}</div>
+      <div class="team-name">{{ exhibitionDetails.exhibition.team_name}}</div>
+      <div class="class-name">{{ exhibitionDetails.exhibition.generation }}</div>
     </div>
   </div>
   <div class="maincontent shadow-box">
@@ -28,7 +28,12 @@
         <ion-icon name="bulb-outline" class="icons"></ion-icon> Introduce
       </div>
       <ul>
-        <li class="introduce-content" *ngFor="let intro of exhibitionDetails.intro">{{ intro }}</li>
+        <div *ngIf="exhibitionDetails.exhibition.exhibitionIntros?.length > 0; ">
+          <li *ngFor="let intro of exhibitionDetails.exhibition.exhibitionIntros">
+            {{ intro.introduce }} 
+          </li>
+        </div>
+        
       </ul>
       <ion-item class="boundary"></ion-item>
 
@@ -36,7 +41,7 @@
         <ion-icon name="people-outline" class="icons"></ion-icon> Members
       </div>
       <ul class="member-list">
-        <li *ngFor="let member of exhibitionDetails.members" class="member-item">
+        <li *ngFor="let member of exhibitionDetails.exhibition.exhibitionMembers" class="member-item">
           <div class="member-container">
             <img [src]="member.image" alt="{{ member.name }}" class="member-image" />
             <p class="member-name">{{ member.name }}</p>
