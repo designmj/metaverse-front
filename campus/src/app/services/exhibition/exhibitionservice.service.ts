@@ -109,17 +109,23 @@ export class ExhibitionService {
   // }
   getAllExhibitionDetails(id: number): Observable<any> {
     return this.getExhibitionDetails(id).pipe(
-      map(result => ({
-        // 모든 관련 정보가 포함된 exhibition 데이터를 반환
-        ...result
-      }))
+      map(result => {
+        console.log('Mapped result:', result);
+        return {
+          // 모든 관련 정보가 포함된 exhibition 데이터를 반환
+          ...result
+        };
+      })
     );
   }
   
+  
   private getExhibitionDetails(id: number): Observable<any> {
     const headers = this.validateToken();
+    console.log("Exh id : "+ id)
     return this.http.get<any>(`${this.apiUrl}/exhibitions/${id}`, { headers });
   }
+
   // Update: 전시물 수정(파일을 삭제하고 올릴 수 있게)
   updateExhibition(id: string, exhibitionData: FormData, introData: FormData, membersData: FormData, outputsData: FormData): Observable<any> {
     return forkJoin({

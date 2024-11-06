@@ -27,12 +27,14 @@ export class ExhibitionDetailsPage implements OnInit {
   }
 
   loadExhibitionDetails() {
+
     if (this.exhibitionId) {
       this.isLoading = true;
       this.exhibitionService.getAllExhibitionDetails(this.exhibitionId).subscribe(
         (data) => {
-          this.exhibitionDetails = data;
+          this.exhibitionDetails = data.exhibition; // 응답 데이터 구조확인 필요 그 내부로 이동해야 함
           this.isLoading = false;
+          console.log('Loaded exhibition details:', this.exhibitionDetails);
         },
         (error) => {
           console.error('전시관 상세 정보 로딩 실패:', error);
