@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable, forkJoin } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { Observable, forkJoin, throwError } from 'rxjs';
+import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -71,7 +71,7 @@ export class ExhibitionService {
 
   // Read: 특정 전시물 가져오기 (상세페이지) - 전체 내용
 
-  // // 데이터를 병렬로 효율적으로 가져오기 위함 + 데이터의 구조를 편리한 형태로 바꿈
+  // 데이터를 병렬로 효율적으로 가져오기 위함 + 데이터의 구조를 편리한 형태로 바꿈
   // getAllExhibitionDetails(id: number): Observable<any> {
   //   return forkJoin({
   //     exhibition: this.getExhibitionDetails(id),
@@ -115,10 +115,24 @@ export class ExhibitionService {
       }))
     );
   }
-  
-  private getExhibitionDetails(id: number): Observable<any> {
+
+  // public getExhibitionDetails(id: number): Observable<any> {
+  //   const headers = this.validateToken();
+  //   return this.http.get<any>(`${this.apiUrl}/exhibitions/${id}`, { headers });
+  // }
+  //테스트
+  public getExhibitionDetails(id: number): Observable<any> {
     const headers = this.validateToken();
-    return this.http.get<any>(`${this.apiUrl}/exhibitions/${id}`, { headers });
+    console.log(`Calling API for exhibition ID: ${id}`); // 호출 로그 추가
+    return this.http.get<any>(`${this.apiUrl}/exhibitions/${id}`, { headers }).pipe(
+      tap(response => {
+        console.log('Received exhibition details:', response); // 받은 데이터 로깅
+      }),
+      catchError(error => {
+        console.error('Error fetching exhibition details:', error); // 오류 로그
+        return throwError(error); // 오류를 다시 던짐
+      })
+    );
   }
   // Update: 전시물 수정(파일을 삭제하고 올릴 수 있게)
   updateExhibition(id: string, exhibitionData: FormData, introData: FormData, membersData: FormData, outputsData: FormData): Observable<any> {

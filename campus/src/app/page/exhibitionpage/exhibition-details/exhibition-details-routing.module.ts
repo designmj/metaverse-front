@@ -5,7 +5,7 @@ import { ExhibitionDetailsPage } from './exhibition-details.page';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'exhibition-detail/:id',
     component: ExhibitionDetailsPage
   }
 ];

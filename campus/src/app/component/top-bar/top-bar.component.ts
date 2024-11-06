@@ -25,6 +25,7 @@ export class TopBarComponent implements OnInit {
     private modalController: ModalController,
     private authService: AuthService,
     private alertController: AlertController,
+
   ) {}
 
   ngOnInit() {
@@ -36,7 +37,11 @@ export class TopBarComponent implements OnInit {
 
   logout() {
     this.authService.logout_current();  // 로그아웃 호출
-    this.showAlert('로그아웃 성공', '로그아웃이 성공적으로 완료되었습니다.');
+    this.showAlert('로그아웃 성공', '로그아웃이 성공적으로 완료되었습니다.')
+      .then(() => {
+      
+     });
+    ;
   }
 
   async openModal() {

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AlertController } from '@ionic/angular';
 import { ExhibitionService } from '../../../services/exhibition/exhibitionservice.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-exhibition-details',
@@ -23,7 +24,7 @@ export class ExhibitionDetailsPage implements OnInit {
 
   ngOnInit() {
     this.exhibitionId = Number(this.route.snapshot.paramMap.get('id'));
-    this.loadExhibitionDetails();
+    this.loadExhibitionDetails(); //전시 세부 정보 로드
   }
 
   loadExhibitionDetails() {
@@ -32,6 +33,7 @@ export class ExhibitionDetailsPage implements OnInit {
       this.exhibitionService.getAllExhibitionDetails(this.exhibitionId).subscribe(
         (data) => {
           this.exhibitionDetails = data;
+          console.log('전시 상세 정보', this.exhibitionDetails);
           this.isLoading = false;
         },
         (error) => {
@@ -42,6 +44,20 @@ export class ExhibitionDetailsPage implements OnInit {
       );
     }
   }
+
+  //전시 세부 정보 보기
+  viewExhibitionDetails(exhibitionId: number) {
+    this.exhibitionService.getAllExhibitionDetails(exhibitionId).subscribe(
+      (response: any) => {
+        this.exhibitionDetails = response; // API에서 받은 세부 정보를 저장
+        console.log('전시 세부 정보:', this.exhibitionDetails);
+      },
+      (error) => {
+        console.error('전시 세부 정보 로딩 실패:', error);
+      }
+    );
+  }
+
   async deleteExhibition() {
     const alert = await this.alertController.create({
       header: '전시물 삭제',

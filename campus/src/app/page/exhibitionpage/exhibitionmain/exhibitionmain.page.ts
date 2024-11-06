@@ -22,27 +22,47 @@ export class ExhibitionmainPage implements OnInit {
     this.loadExhibitions();
   }
 
-  loadExhibitions() {
-    this.exhibitionService.getExhibitions().subscribe(
-      (response: any) => {
-        console.log('API 응답:', response); // 응답을 로그로 출력
+  async loadExhibitions() {
+    try {
+      const response: any = await this.exhibitionService.getExhibitions().toPromise();
+      console.log('API 응답:', response); // 응답을 로그로 출력
+      if (response && response.exhibitions) {
         this.exhibitions = response.exhibitions;
         // 각 전시의 이미지를 로드
         this.exhibitions.forEach(exhibition => {
           console.log('전시관 ID:', exhibition.exhibition_id); // ID를 로그로 출력
           this.loadImage(exhibition.exhibition_id); // exhibition.id를 사용하여 이미지 로드
         });
-      },
-      (error) => {
-        console.error('전시관 데이터 로딩 실패:', error);
+      } else {
+        console.error('전시관 데이터가 없습니다.');
       }
-    );
+    } catch (error) {
+      console.error('전시관 데이터 로딩 실패:', error);
+    }
   }
 
+  // navigateToExhibition(exhibitionId: number) {
+  //   console.log('navigateToExhibition called:', exhibitionId);
+  //   this.loadImage(exhibitionId); // 이미지 로드 호출
+  //   this.router.navigate(['/exhibition', exhibitionId]);
+  // }
+
+  //전시 세부 정보 보기
+  // navigateToExhibition(exhibitionId: number) {
+  //   this.exhibitionService.getExhibitionDetails(exhibitionId).subscribe(
+  //     (response: any) => {
+  //       this.exhibitionDetails = response; // API에서 받은 세부 정보를 저장
+  //       console.log('전시 세부 정보:', this.exhibitionDetails);
+  //       this.router.navigate(['/exhibition-detail', exhibitionId]); // 세부 정보 페이지로 이동
+  //     },
+  //     (error) => {
+  //       console.error('전시 세부 정보 로딩 실패:', error);
+  //     }
+  //   );
+  // }
   navigateToExhibition(exhibitionId: number) {
-    console.log('navigateToExhibition called:', exhibitionId);
-    this.loadImage(exhibitionId); // 이미지 로드 호출
-    this.router.navigate(['/exhibition', exhibitionId]);
+    console.log('Navigating to exhibition with ID:', exhibitionId); // 디버깅 로그
+    this.router.navigate(['/exhibitionmain', exhibitionId]); // 세부 정보 페이지로 이동
   }
 
   changeTitle(newTitle: string) {

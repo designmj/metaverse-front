@@ -53,7 +53,9 @@
       <ion-button (click)="logout()" 
                   class="login" 
                   fill="clear" 
-                  *ngIf="isLoggedIn">
+                  *ngIf="isLoggedIn"
+                  [routerLink]="['/']"
+                  >
         <!-- <ion-icon name="log-out-outline"></ion-icon> -->
         <ion-label class="login-text">로그아웃하기</ion-label>
       </ion-button>
