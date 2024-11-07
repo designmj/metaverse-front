@@ -59,7 +59,3 @@ export class SidemenuComponent {
     return await modal.present();
   }
 }
-
-
-
-
