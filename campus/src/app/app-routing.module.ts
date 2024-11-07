@@ -56,17 +56,17 @@ const routes: Routes = [
     loadChildren: () => import('./page/exhibitionpage/exhibitioncreate/exhibitioncreate.module').then(m => m.ExhibitioncreatePageModule)
   },
   {
-    path: 'classsignup',
-    loadChildren: () => import('./page/studyroompage/classsignup/classsignup.module').then(m => m.ClasssignupPageModule)
+    path: 'coursejoin',
+    loadChildren: () => import('./page/studyroompage/course-join/course-join.module').then(m => m.CourseJoinPageModule)
   },
   {
-    path: 'classmy',
-    loadChildren: () => import('./page/studyroompage/classmy/classmy.module').then(m => m.ClassmyPageModule)
+    path: 'coursemy',
+    loadChildren: () => import('./page/studyroompage/course-my/course-my.module').then(m => m.CourseMyPageModule)
   },
-  {
-    path: 'classnone',
-    loadChildren: () => import('./page/studyroompage/classnone/classnone.module').then(m => m.ClassnonePageModule)
-  },
+  // {
+  //   path: 'classnone',
+  //   loadChildren: () => import('./page/studyroompage/course-one/course-one.module').then(m => m.ClassnonePageModule)
+  // },
   {
     path: 'projectsearch',
     loadChildren: () => import('./page/studyroompage/projectsearch/projectsearch.module').then(m => m.ProjectsearchPageModule)

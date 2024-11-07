@@ -1,0 +1,53 @@
+<ion-content>
+  <div class="layout">
+    <app-sidemenu class="sidemenu"></app-sidemenu>
+    <div class="content-wrapper">
+      <div class="main-container">
+
+        <div>
+          <div class="project-search">
+            <ion-icon size="large" name="school-outline"></ion-icon>
+            <h2 class="project-title">강의 학습하기</h2>
+          </div>
+          <div class="class-create">
+            <h6>코스별 다양한 강의를 확인해 보세요</h6>
+          </div>
+        </div>
+
+        <hr/>
+
+        <div class="project-box">
+          <ion-card class="class2" *ngFor="let course of getPaginatedCourses()">
+              <ion-card-header>
+                <ion-card-title>{{ course.title }}</ion-card-title>
+                <ion-card-subtitle>{{ course.instructor }}</ion-card-subtitle>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-toggle [enableOnOffLabels]="true" (click)="toggleCourse(course)">
+                  {{ course.isExpanded ? '이 코스의 강의 목록 접기' : '이 코스의 강의 목록 보기' }}
+                </ion-toggle>
+                <ion-list *ngIf="course.isExpanded">
+                  <ion-item *ngFor="let lesson of getLessons(course.id)">
+                    <ion-thumbnail slot="start">
+                      <img alt="강의 썸네일" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+                    </ion-thumbnail>
+                    <ion-label>{{ lesson }}</ion-label>
+                    <button ion-button icon-only round>
+                      <ion-icon name="play"></ion-icon  >
+                  </button>
+                  </ion-item>
+                </ion-list>
+              </ion-card-content>
+          </ion-card>
+
+          <div class="pagination">
+            <ion-button (click)="prevPage()" [disabled]="currentPage === 1">이전</ion-button>
+            <ion-button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= courses.length">다음</ion-button>
+          </div>
+        </div>
+
+
+        </div>
+      </div>
+    </div>
+</ion-content>

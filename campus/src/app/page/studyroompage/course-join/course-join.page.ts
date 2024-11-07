@@ -8,22 +8,18 @@ import { ApiResponse } from 'src/app/models/common/api-response.interface';
 import { CreateCourseRegistrationDto } from '../../../models/course/courses/course-registration.interface';
 import { Registration } from '../../../models/enums/role.enums';
 import { HttpErrorResponse } from '@angular/common/http';
-/*
-interface DecodedToken {
-  user_id: number;
-  // 필요한 경우 다른 토큰 필드들을 여기에 추가하세요
-}*/
+
 
 @Component({
   selector: 'app-classsignup',
-  templateUrl: './classsignup.page.html',
-  styleUrls: ['./classsignup.page.scss'],
+  templateUrl: './course-join.page.html',
+  styleUrls: ['./course-join.page.scss'],
 })
 
 
 
 
-export class ClasssignupPage implements OnInit {
+export class CourseJoinPage implements OnInit {
   registeredCourses: Set<number> = new Set(); // 신청한 강의 ID를 저장할 Set
   courses: CourseResponseDto[] = []; // 가져온 강의 정보를 저장할 배열
   coursesRegistration : CreateCourseRegistrationDto[] = [];
@@ -49,6 +45,8 @@ export class ClasssignupPage implements OnInit {
     try {
       const response: ApiResponse<CourseResponseDto[]> = await firstValueFrom(this.courseService.getAllCourses());
       this.courses = response.data; // response.data에서 배열 추출
+      console.log(response)
+      console.log(response.data)
     } catch (error) {
       console.error('Error loading courses', error);
     }

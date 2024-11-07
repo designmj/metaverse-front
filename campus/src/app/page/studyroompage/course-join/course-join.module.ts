@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { ClasssignupPageRoutingModule } from './classsignup-routing.module';
-import { ClasssignupPage } from './classsignup.page';
+import { CourseJoinPageRoutingModule } from './course-join-routing.module';
+import { CourseJoinPage } from './course-join.page';
 import { SidemenuComponent } from "../../../component/sidemenucomponent/sidemenu.component";
 
 @NgModule({
@@ -11,9 +11,9 @@ import { SidemenuComponent } from "../../../component/sidemenucomponent/sidemenu
         CommonModule,
         FormsModule,
         IonicModule,
-        ClasssignupPageRoutingModule,
+        CourseJoinPageRoutingModule,
         SidemenuComponent
     ],
-  declarations: [ClasssignupPage]
+  declarations: [CourseJoinPage]
 })
-export class ClasssignupPageModule {}
+export class CourseJoinPageModule {}

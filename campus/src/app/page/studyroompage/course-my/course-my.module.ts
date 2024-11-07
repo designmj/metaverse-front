@@ -4,9 +4,9 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { ClassmyPageRoutingModule } from './classmy-routing.module';
+import { CourseMyPageRoutingModule } from './course-my-routing.module';
 
-import { ClassmyPage } from './classmy.page';
+import { CourseMyPage } from './course-my.page';
 import {SidemenuComponent} from "../../../component/sidemenucomponent/sidemenu.component";
 import {CourseTitleComponent} from "../../../component/course-title/course-title.component";
 import {DocTopicComponent} from "../../../component/doc-topic/doc-topic.component";
@@ -16,9 +16,9 @@ import {DocTopicComponent} from "../../../component/doc-topic/doc-topic.componen
     CommonModule,
     FormsModule,
     IonicModule,
-    ClassmyPageRoutingModule,
+    CourseMyPageRoutingModule,
     SidemenuComponent
   ],
-    declarations: [ClassmyPage, CourseTitleComponent, DocTopicComponent]
+    declarations: [CourseMyPage, CourseTitleComponent, DocTopicComponent]
 })
-export class ClassmyPageModule {}
+export class CourseMyPageModule {}
