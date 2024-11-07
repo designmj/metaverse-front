@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { CourseService } from '../../services/course/course.service'; // 서비스 import
-import { AlertController } from '@ionic/angular'; // AlertController import
-import { firstValueFrom } from 'rxjs'; // firstValueFrom import
+import { CourseService } from '../../services/course/course.service';
+import { AlertController } from '@ionic/angular';
+import { firstValueFrom } from 'rxjs';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 

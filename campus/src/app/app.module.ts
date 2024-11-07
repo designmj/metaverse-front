@@ -21,7 +21,7 @@ export function tokenGetter() {
 }
 
 @NgModule({
-  declarations: [AppComponent, AttendanceModalComponent, UserDataModalComponent],
+  declarations: [AppComponent, AttendanceModalComponent],
 
   imports: [BrowserModule, ReactiveFormsModule,
     IonicModule.forRoot(),
