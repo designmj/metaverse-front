@@ -26,7 +26,7 @@
               <ion-list>
                 <ion-item *ngFor="let lesson of getPaginatedLessons()" href="https://s3-bucket-boardapp.s3.ap-northeast-2.amazonaws.com/exhibitions/videos/4858b7a8-0a64-4ddc-aff6-ff8fd76e73f5_KakaoTalk_Video_2024-11-07-11-51-11.mp4" target="_blank">
                     <ion-label>{{ lesson.name }}</ion-label>
-                    <ion-button color="secondary">
+                    <ion-button color="tertiary">
                       <ion-icon name="logo-youtube"></ion-icon>
                       <h4 class="lesson-button-text">강의보기</h4>
                     </ion-button>
@@ -35,8 +35,8 @@
             </ion-card-content>
             <div class="pagination">
               <div class="pagination-buttons">
-                <ion-button color="secondary" (click)="prevPage()" [disabled]="currentPage === 1">이전</ion-button>
-                <ion-button color="secondary" (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= course.lessons.length">다음</ion-button>
+                <ion-button color="tertiary" (click)="prevPage()" [disabled]="currentPage === 1">이전</ion-button>
+                <ion-button color="tertiary" (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= course.lessons.length">다음</ion-button>
               </div>
             </div>
           </ion-card>

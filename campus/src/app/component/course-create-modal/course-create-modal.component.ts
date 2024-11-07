@@ -19,7 +19,7 @@ import { CommonModule } from '@angular/common';
 })
 export class CourseCreateModalComponent implements OnInit {
   courseForm!: FormGroup;
-  generations: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // 1기~10기까지 기수 초기화(필요시 추가 또는 로직구성)
+  generations: number[] = [1, 2, 3, 4]; // 1기~10기까지 기수 초기화(필요시 추가 또는 로직구성)
 
   constructor(
     private formBuilder: FormBuilder,
