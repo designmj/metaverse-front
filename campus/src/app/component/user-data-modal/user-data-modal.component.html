@@ -1,0 +1,17 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>마이페이지</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header> -->
+
+<ion-content (click)="closeModal()">
+  <div class="user-profile">
+    <h2>{{ userName }}</h2>
+    <p>{{ userRole }}</p>
+  </div>
+</ion-content>

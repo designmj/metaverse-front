@@ -519,7 +519,9 @@ export class ExhibitioncreatePage {
         this.submitIntroductions(exhibitionId);
         this.submitMembers(exhibitionId);
         this.submitOutputs(exhibitionId);
-        this.router.navigate(['/exhibitionmain']); 
+        this.router.navigate(['/exhibitionmain']).then(() => {
+          window.location.reload();
+        }); 
       },
       error: (exhibitionError) => {
         console.error('전시 생성 실패:', exhibitionError);
