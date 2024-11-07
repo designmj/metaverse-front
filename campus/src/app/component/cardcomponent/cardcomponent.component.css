@@ -1,0 +1,41 @@
+@charset "UTF-8";
+ion-card {
+  aspect-ratio: 15/14 !important;
+  overflow: hidden;
+  border-radius: 5px;
+  box-shadow: none; /* 기본 그림자 제거 */
+}
+
+ion-card-header {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: left;
+}
+
+ion-card-title {
+  font-size: 1.6em;
+  overflow: hidden;
+  font-family: "pretendard-B", serif;
+}
+
+ion-card-subtitle {
+  font-size: 1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: "pretendard-B", serif;
+}
+
+ion-card-content {
+  text-align: left;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  height: 60px;
+}
+
+img {
+  border-radius: 5px;
+  width: 100%;
+  aspect-ratio: 16/9 !important;
+}/*# sourceMappingURL=cardcomponent.component.css.map */

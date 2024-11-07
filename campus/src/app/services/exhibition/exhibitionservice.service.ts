@@ -62,6 +62,8 @@ export class ExhibitionService {
     return this.http.get<any[]>(`${this.apiUrl}/exhibitions`, { headers });
   }
 
+  
+
   // Presigned URL 요청 메소드
   getPresignedUrls(Id: number): Observable<{ url: string }> {
     const headers = this.validateToken()
