@@ -174,14 +174,14 @@ export class CourseService {
     return this.http.delete<ApiResponse<CourseDocResponseData>>(`${this.courseApiUrl}/${courseId}/docNames/${topicId}/courseDocs/download/${courseDocId}`, { headers })
   }
 
-  // 영상 주제 생성(POST)
-  createVideoTopic(courseId: number, VideoTopicData: any): Observable<ApiResponse<VideoTopicResponseData>> {
+  // 강의 영상 생성(POST)
+  createLesson(VideoTopicData: any): Observable<ApiResponse<VideoTopicResponseData>> {
     const headers = this.getAuthHeaders();
-    return this.http.post<ApiResponse<VideoTopicResponseData>>(`${this.courseApiUrl}/${courseId}/videoTopics/registerVT`, VideoTopicData, { headers })
+    return this.http.post<ApiResponse<VideoTopicResponseData>>(`${this.courseApiUrl}/${VideoTopicData.course_id}/videoTopics/registerVT`, VideoTopicData, { headers })
   }
 
-  // 영상 주제 조회(GET | 전체 조회)
-  getAllVideoTopic(courseId: number | null): Observable<ApiResponse<VideoTopicResponseData[]>> {
+  // 강의 영상 조회(GET | 전체 조회)
+  getAllLessons(courseId: number | null): Observable<ApiResponse<VideoTopicResponseData[]>> {
     const headers = this.getAuthHeaders();
     return this.http.get<ApiResponse<VideoTopicResponseData[]>>(`${this.courseApiUrl}/${courseId}/videoTopics/allVT2`, { headers });
   }
@@ -192,13 +192,13 @@ export class CourseService {
     return this.http.patch<ApiResponse<VideoTopicResponseData>>(`${this.courseApiUrl}/${courseId}/videoTopics/${videoTopicId}/update`, VideoTopicData, { headers })
   }
 
-  // 영상 주제 삭제(DELETE)
-  deleteVideoTopic(courseId: number, videoTopicId: number): Observable<ApiResponse<void>> {
+  // 강의 영상 삭제(DELETE)
+  deleteLesson(courseId: number, videoTopicId: number): Observable<ApiResponse<void>> {
     const headers = this.getAuthHeaders();
     return this.http.delete<ApiResponse<void>>(`${this.courseApiUrl}/${courseId}/videoTopics/${videoTopicId}/delete`, { headers });
   }
 
-  // 영상 생성(업로드, POST)
+  // 강의 영상 생성(업로드, POST)
   createVideo(courseId: number, videoTopicId: number, VideoData: any): Observable<ApiResponse<VideoResponseData>> {
     const headers = this.getAuthHeaders();
     return this.http.post<ApiResponse<VideoResponseData>>(`${this.courseApiUrl}/${courseId}/videoTopics/${videoTopicId}/video/upload`, VideoData, { headers })
