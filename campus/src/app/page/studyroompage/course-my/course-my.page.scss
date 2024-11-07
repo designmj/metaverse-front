@@ -170,3 +170,18 @@ ion-col{
   background-color: black;
   color: white;
 }
+
+.pagination {
+  display: flex;
+  justify-content: center; // 수평 가운데 정렬
+  margin-top: 20px; // 버튼과 위 요소 간의 간격 조정
+}
+
+.pagination-buttons {
+  display: flex;
+  gap: 10px; // 버튼 간의 간격 조정
+}
+
+.lesson-button-text{
+  padding-left: 10px;
+}

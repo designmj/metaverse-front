@@ -1,5 +1,9 @@
 ion-content{
   --border-radius: 100px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
 }
 
 ion-modal{
@@ -24,14 +28,36 @@ ion-card{
   margin:50px;
 }
 
+.modal-toolbar-title{
+  text-align: center;
+}
+
+.modal-toolbar-contents{
+  margin: 20px;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; 
+  position: fixed;
+  bottom: 2em;
+  left: 265px;
+}
+
+.button-container-buttons {
+  display: flex;
+  gap: 10px; // 버튼 간의 간격 조정
+}
+
 .join-title{
   font-size: 20px;
   margin:10px;
   font-family: pretendard-B,Serif;
-
-
 }
-
 
 .input-lesson{
   border: 1px solid #1c1c1c;
