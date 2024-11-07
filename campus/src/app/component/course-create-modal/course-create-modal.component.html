@@ -1,15 +1,25 @@
 <ion-content class="modal-content">
-  <ion-card>
-    <ion-card-header>
-      <ion-card-title>학습 코스 생성</ion-card-title>
-    </ion-card-header>
-    <form [formGroup]="courseForm" (ngSubmit)="onSubmit()">
-      <ion-input formControlName="course_title" label="코스이름" labelPlacement="floating" [counter]="true" maxlength="30"></ion-input>
-      <ion-input formControlName="instructor_name" label="강사이름" labelPlacement="floating" [counter]="true" maxlength="20"></ion-input>
-      <ion-input formControlName="description" label="코스설명" labelPlacement="floating" [counter]="true" maxlength="100"></ion-input>
-      <ion-input formControlName="generation" label="기수" labelPlacement="floating" [counter]="true" maxlength="5"></ion-input>
+  <ion-header>
+    <ion-toolbar color="tertiary">
+      <ion-title class="modal-toolbar-title">학습 코스 생성</ion-title>
+    </ion-toolbar>
+  </ion-header>
+    <form class="modal-toolbar-contents" [formGroup]="courseForm" (ngSubmit)="onSubmit()">
+      <ion-input formControlName="course_title" label="코스이름" placeholder="ex: NestJS, Angular를 활용한 풀스택 웹 서비스 개발" labelPlacement="stacked" [counter]="true" maxlength="30" [clearInput]="true"></ion-input>
+      <ion-input formControlName="instructor_name" label="강사이름" placeholder="ex: 김인용" labelPlacement="stacked" [counter]="true" maxlength="20" [clearInput]="true"></ion-input>
+      <ion-textarea formControlName="description" label="코스설명"  placeholder="ex: Node.js 기반의 NestJS, Angular 프레임워크 웹 개발" labelPlacement="stacked" [counter]="true" maxlength="200" ></ion-textarea>
+      
+      <ion-select formControlName="generation" label="기수" placeholder="ex: 1기(기수선택)" label-placement="stacked" interface="popover">
+        <ion-select-option *ngFor="let generation of generations" [value]="generation">
+          {{ generation }}기
+        </ion-select-option>
+      </ion-select>
 
-      <ion-button class="btn-login" type="submit">생성하기</ion-button>
+      <!-- <div class="button-container">
+        <ion-button color="secondary" class="btn-login" type="submit">생성하기</ion-button>
+      </div> -->
+      <div class="btn-container">
+        <a data-animation="ripple" class="btn-login" onclick="onSubmit()">생성하기</a>
+      </div>
     </form>
-  </ion-card>
 </ion-content>

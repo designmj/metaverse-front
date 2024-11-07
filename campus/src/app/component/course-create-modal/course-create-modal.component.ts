@@ -4,6 +4,7 @@ import { CourseService } from '../../services/course/course.service'; // 서비�
 import { AlertController } from '@ionic/angular'; // AlertController import
 import { firstValueFrom } from 'rxjs'; // firstValueFrom import
 import { IonicModule } from '@ionic/angular';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-course-create-modal',
@@ -11,12 +12,14 @@ import { IonicModule } from '@ionic/angular';
   styleUrls: ['./course-create-modal.component.scss'],
   standalone: true,
   imports: [
+    CommonModule,
     IonicModule,
-    ReactiveFormsModule,  // 추가된 부분
+    ReactiveFormsModule,
   ]
 })
 export class CourseCreateModalComponent implements OnInit {
   courseForm!: FormGroup;
+  generations: number[] = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]; // 1기~10기까지 기수 초기화(필요시 추가 또는 로직구성)
 
   constructor(
     private formBuilder: FormBuilder,
@@ -27,11 +30,13 @@ export class CourseCreateModalComponent implements OnInit {
       course_title: ['', Validators.required],
       instructor_name: ['', Validators.required],
       description: ['', Validators.required],
+      generation: ['', Validators.required],
     });
   }
 
-  ngOnInit() {}
-
+  ngOnInit() {
+  }
+  
   async onSubmit() {
     if (this.courseForm.valid) {
       const courseData = this.courseForm.value;
@@ -42,11 +47,11 @@ export class CourseCreateModalComponent implements OnInit {
         console.log('Course created successfully:', response);
 
         // 성공 시 Alert 띄우기
-        await this.showAlert('성공', '클래스가 성공적으로 생성되었습니다.');
+        await this.showAlert('성공', '코스가 성공적으로 생성되었습니다.');
       } catch (error) {
         console.error('Error creating course:', error);
         // 오류 발생 시 Alert 띄우기
-        await this.showAlert('실패', '클래스 생성에 실패했습니다.');
+        await this.showAlert('실패', '코스 생성에 실패했습니다.');
       }
     }
   }

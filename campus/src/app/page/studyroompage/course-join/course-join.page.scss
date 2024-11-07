@@ -10,7 +10,6 @@
   height: 100%;
 }
 
-
 .content-wrapper {
   flex-grow: 1;
   overflow: auto;
@@ -119,7 +118,6 @@ ion-col{
   justify-content: space-between;
 
   .create-btn{
-
     --color: #7B7B7B;
     --border-radius: 10px;
     --border-color: #aeaeae;
@@ -127,9 +125,7 @@ ion-col{
     --border-width: 1.5px;
     --padding-bottom:3px;
     --padding-top:3px;
-
     font-size: 15px;
-
   }
 }
 

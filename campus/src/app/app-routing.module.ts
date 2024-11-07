@@ -3,9 +3,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { SidemenuComponent } from './component/sidemenucomponent/sidemenu.component';
 import {TopBarComponent} from "./component/top-bar/top-bar.component";
 
-
-
-// @ts-ignore
 const routes: Routes = [
   {
     path: '',
@@ -47,10 +44,6 @@ const routes: Routes = [
     path: 'studyroom',
     loadChildren: () => import('./page/studyroompage/studyroom/studyroom.module').then(m => m.StudyroomPageModule)
   },
-  // {
-  //   path: 'page',
-  //   loadChildren: () => import('./page/page.module').then( m => m.PagePageModule)
-  // },
   {
     path: 'exhibitioncreate',
     loadChildren: () => import('./page/exhibitionpage/exhibitioncreate/exhibitioncreate.module').then(m => m.ExhibitioncreatePageModule)
@@ -63,10 +56,6 @@ const routes: Routes = [
     path: 'coursemy',
     loadChildren: () => import('./page/studyroompage/course-my/course-my.module').then(m => m.CourseMyPageModule)
   },
-  // {
-  //   path: 'classnone',
-  //   loadChildren: () => import('./page/studyroompage/course-one/course-one.module').then(m => m.ClassnonePageModule)
-  // },
   {
     path: 'projectsearch',
     loadChildren: () => import('./page/studyroompage/projectsearch/projectsearch.module').then(m => m.ProjectsearchPageModule)
@@ -83,10 +72,6 @@ const routes: Routes = [
     path: 'exhibition-update',
     loadChildren: () => import('./page/exhibitionpage/exhibition-update/exhibition-update.module').then( m => m.ExhibitionUpdatePageModule)
   },
-
-
-
-
 ];
 
 @NgModule({

@@ -17,37 +17,31 @@
         <hr/>
 
         <div class="project-box">
-          <ion-card class="class2" *ngFor="let course of getPaginatedCourses()">
-              <ion-card-header>
-                <ion-card-title>{{ course.title }}</ion-card-title>
-                <ion-card-subtitle>{{ course.instructor }}</ion-card-subtitle>
-              </ion-card-header>
-              <ion-card-content>
-                <ion-toggle [enableOnOffLabels]="true" (click)="toggleCourse(course)">
-                  {{ course.isExpanded ? '이 코스의 강의 목록 접기' : '이 코스의 강의 목록 보기' }}
-                </ion-toggle>
-                <ion-list *ngIf="course.isExpanded">
-                  <ion-item *ngFor="let lesson of getLessons(course.id)">
-                    <ion-thumbnail slot="start">
-                      <img alt="강의 썸네일" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-                    </ion-thumbnail>
-                    <ion-label>{{ lesson }}</ion-label>
-                    <button ion-button icon-only round>
-                      <ion-icon name="play"></ion-icon  >
-                  </button>
-                  </ion-item>
-                </ion-list>
-              </ion-card-content>
+          <ion-card class="class2">
+            <ion-card-header>
+              <ion-card-title>{{ course.title }}</ion-card-title>
+              <ion-card-subtitle>{{ course.instructor }}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-list>
+                <ion-item *ngFor="let lesson of getPaginatedLessons()" href="https://s3-bucket-boardapp.s3.ap-northeast-2.amazonaws.com/exhibitions/videos/4858b7a8-0a64-4ddc-aff6-ff8fd76e73f5_KakaoTalk_Video_2024-11-07-11-51-11.mp4" target="_blank">
+                    <ion-label>{{ lesson.name }}</ion-label>
+                    <ion-button color="secondary">
+                      <ion-icon name="logo-youtube"></ion-icon>
+                      <h4 class="lesson-button-text">강의보기</h4>
+                    </ion-button>
+                </ion-item>        
+              </ion-list>
+            </ion-card-content>
+            <div class="pagination">
+              <div class="pagination-buttons">
+                <ion-button color="secondary" (click)="prevPage()" [disabled]="currentPage === 1">이전</ion-button>
+                <ion-button color="secondary" (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= course.lessons.length">다음</ion-button>
+              </div>
+            </div>
           </ion-card>
-
-          <div class="pagination">
-            <ion-button (click)="prevPage()" [disabled]="currentPage === 1">이전</ion-button>
-            <ion-button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= courses.length">다음</ion-button>
-          </div>
-        </div>
-
-
         </div>
       </div>
     </div>
+  </div>
 </ion-content>
