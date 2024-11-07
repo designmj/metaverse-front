@@ -37,6 +37,10 @@
   margin-bottom: 10px;
 }
 
+.project-title{
+  padding-left: 10px;
+}
+
 ion-header{
   --box-shadow: none;
   border-bottom: 1px solid #CDCDCD;
@@ -77,6 +81,15 @@ ion-col{
 
 .class1{
   padding: 40px;
+  background-color: #F8F8F8;
+  border-radius: 10px;
+  border: 1px solid #D6D6D6;
+  width: 100%;
+  height: flex;
+}
+
+.class2{
+  padding: 15px;
   background-color: #F8F8F8;
   border-radius: 10px;
   border: 1px solid #D6D6D6;

@@ -1,182 +1,53 @@
-
 <ion-content>
   <div class="layout">
     <app-sidemenu class="sidemenu"></app-sidemenu>
     <div class="content-wrapper">
-      <!-- <ion-header class="ion-no-border"> -->
-        <!-- <ion-toolbar>
-          <ion-title>클래스 목록</ion-title>
-        </ion-toolbar> -->
-      <!-- </ion-header> -->
       <div class="main-container">
 
         <div>
           <div class="project-search">
-            <ion-icon size="large" name="search-outline"></ion-icon>
-            <h2 class="project-title"> 학습하기 </h2>
+            <ion-icon size="large" name="school-outline"></ion-icon>
+            <h2 class="project-title">강의 학습하기</h2>
           </div>
-
           <div class="class-create">
-            <h6>클래스의 다양한 강의를 확인해 보세요</h6>
-            <!-- <ion-button class="create-btn" size="small" fill="outline" (click)="createCourse()">생성하기</ion-button> -->
+            <h6>코스별 다양한 강의를 확인해 보세요</h6>
           </div>
         </div>
 
         <hr/>
-<!-- 
-        <div class="project-box">
-          <ion-grid class="class1">
-            <ion-row>
-              <ion-col>1</ion-col>
-              <ion-col size="2">최강사2</ion-col>
-              <ion-col size="8" class="class-title">
-                <ion-col class="col">테스트 강의 타이틀 1</ion-col>
-                <br />
-                <ion-col class="class-team">웹개발프론트엔드과정의 설명 테스트입니다.</ion-col>
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-                    
-          <ion-grid class="class1">
-            <ion-row>
-              <ion-col>2</ion-col>
-              <ion-col size="2">김강사2</ion-col> 
-              <ion-col size="8" class="class-title">
-                <ion-col class="col">테스트 강의 타이틀 2</ion-col> 
-                <br />
-                <ion-col class="class-team">웹개발백엔드과정의 설명 테스트입니다.</ion-col> 
-              </ion-col>
-            </ion-row>
-          </ion-grid>
-        </div>
-      -->
-<div class="project-box">
-  <ion-grid class="class1" *ngFor="let course of getPaginatedCourses()">
-    <ion-card>
-      <ion-card-header>
-        <ion-card-title>{{ course.title }}</ion-card-title>
-        <ion-card-subtitle>{{ course.instructor }}</ion-card-subtitle>
-      </ion-card-header>
-      <ion-card-content>
-        <ion-button (click)="toggleCourse(course)">
-          {{ course.isExpanded ? '숨기기' : '강의목록' }}
-        </ion-button>
-        <ion-list *ngIf="course.isExpanded">
-          <ion-item *ngFor="let lesson of getLessons(course.id)">
-            <ion-thumbnail slot="start">
-              <img alt="강의 썸네일" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
-            </ion-thumbnail>
-            <ion-label>{{ lesson }}</ion-label>
-            <button ion-button icon-only round>
-              <ion-icon name="play"></ion-icon  >
-           </button>
-          </ion-item>
-        </ion-list>
-      </ion-card-content>
-    </ion-card>
-  </ion-grid>
 
-  <div class="pagination">
-    <ion-button (click)="prevPage()" [disabled]="currentPage === 1">이전</ion-button>
-    <!-- <span>페이지 {{ currentPage }} / {{ Math.ceil(courses.length / itemsPerPage) }}</span> -->
-    <ion-button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= courses.length">다음</ion-button>
-  </div>
-</div>
+        <div class="project-box">
+          <ion-card class="class2" *ngFor="let course of getPaginatedCourses()">
+              <ion-card-header>
+                <ion-card-title>{{ course.title }}</ion-card-title>
+                <ion-card-subtitle>{{ course.instructor }}</ion-card-subtitle>
+              </ion-card-header>
+              <ion-card-content>
+                <ion-toggle [enableOnOffLabels]="true" (click)="toggleCourse(course)">
+                  {{ course.isExpanded ? '이 코스의 강의 목록 접기' : '이 코스의 강의 목록 보기' }}
+                </ion-toggle>
+                <ion-list *ngIf="course.isExpanded">
+                  <ion-item *ngFor="let lesson of getLessons(course.id)">
+                    <ion-thumbnail slot="start">
+                      <img alt="강의 썸네일" src="https://ionicframework.com/docs/img/demos/thumbnail.svg" />
+                    </ion-thumbnail>
+                    <ion-label>{{ lesson }}</ion-label>
+                    <button ion-button icon-only round>
+                      <ion-icon name="play"></ion-icon  >
+                  </button>
+                  </ion-item>
+                </ion-list>
+              </ion-card-content>
+          </ion-card>
+
+          <div class="pagination">
+            <ion-button (click)="prevPage()" [disabled]="currentPage === 1">이전</ion-button>
+            <ion-button (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= courses.length">다음</ion-button>
+          </div>
+        </div>
 
 
         </div>
       </div>
     </div>
 </ion-content>
-
-
-<!-- <ion-content>
-  <div class="layout">
-    <app-sidemenu class="sidemenu"></app-sidemenu>
-    <div class="content-wrapper">
-      <ion-header class="ion-no-border">
-        <ion-toolbar>
-          <ion-title></ion-title>
-        </ion-toolbar>
-      </ion-header>
-
-      <app-course-title></app-course-title>
-
-      <section class="course-page">
-        <h3 class="detail-menu">상세메뉴</h3>
-        <ul id="course-menu">
-          <li class="course-list" [ngClass]="{ active: data.activeSection === 'course' }" (click)="setActiveSection('course')">강의목록</li>
-         <li class="learn-material" [ngClass]="{ active: data.activeSection === 'material' }" (click)="setActiveSection('material')">학습자료</li>
-        </ul>
-        <hr/>
-      </section>
-
-      <div *ngIf="data.activeSection === 'course'"  [ngClass]="{ active: data.activeSection === 'course' }" class="active-section">
-
-        <div class="course-entire-inner">
-          <div class="course-inner">
-            <div class="course-title-icon">
-              <img src="assets/svg/Video_Player.svg"/>
-              <span class="course-title-des">지난 날의 강의를 다시 복습할 수 있어요</span>
-            </div>
-
-            <div class="VideoTopics-length">총 {{ data.VideoTopics.length }}강의</div>
-            <ul class="course-item-list">
-              <li *ngIf="data.isEmptyState" class="course-item-empty">
-                <div class="course-item course-item-add">
-                  <span>영상 주제를 추가해볼까요?</span>
-                  <div (click)="addFirstcourseItem()" class="create-btn"> + </div>
-                </div>
-              </li>
-
-              <li *ngFor="let item of data.courseItems; let i = index" class="course-item-entire">
-                <div class="course-item course-item-add">
-                  <div class="course-order-name">
-                    <span class="course-order"></span>
-                    <div>{{ item.title }}</div>
-                    <input [(ngModel)]="item.newCourseTitle" placeholder="비디오 주제 입력" />
-                  </div>
-                  <div class="course-menu">
-                    <button (click)="videotopicRegister(i)">생성</button>
-                  </div>
-                </div>
-
-                <div (click)="addcourseItem(i)" class="create-btn"> + </div>
-              </li>
-            </ul>
-
-          </div>
-
-          <ul class="course-item-list">
-            <li class="course-item-entire" *ngFor="let VT of data.VideoTopics; let i = index">
-              <div class="create-btn">+</div>
-              <div class="course-item">
-                <div class="course-order-name">
-                  <span class="course-order">{{ i + 1 }}</span>
-                  <div>{{ VT.video_topic_title }}</div>
-                </div>
-                <div class="course-menu">
-                  <div class="video-upload">영상파일 올리기</div>
-                  <ion-icon *ngIf="VT.video_topic_id !== null" name="trash" style="cursor: pointer;"
-                            (click)="deleteVideo(course_id, VT.video_topic_id)">
-                  </ion-icon>
-                  <button *ngIf="VT.video_topic_id !== null" (click)="deleteVideo(course_id, VT.video_topic_id)" style="cursor: pointer;">
-                    Delete Video
-                  </button>
-                </div>
-              </div>
-            </li>
-          </ul>
-
-
-
-
-        </div>
-
-      </div>
-      <div *ngIf="data.activeSection === 'material'" class="active-section">
-        <app-doc-topic></app-doc-topic>
-      </div>
-    </div>
-  </div>
-</ion-content> -->

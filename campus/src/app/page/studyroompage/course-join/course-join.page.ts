@@ -45,6 +45,8 @@ export class CourseJoinPage implements OnInit {
     try {
       const response: ApiResponse<CourseResponseDto[]> = await firstValueFrom(this.courseService.getAllCourses());
       this.courses = response.data; // response.data에서 배열 추출
+      console.log(response)
+      console.log(response.data)
     } catch (error) {
       console.error('Error loading courses', error);
     }
