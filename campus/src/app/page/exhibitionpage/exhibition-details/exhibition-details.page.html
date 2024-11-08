@@ -69,17 +69,10 @@
       <div class="parent-container">
         <div class="button-container">
           <!-- <ion-button [routerLink]="['/exhibition-update', exhibitionDetails.exhibition_id]" class="custom-button">수정하기</ion-button> -->
-          <ion-button color="primary" (click)="deleteExhibition()" class="custom-button">전시물 삭제</ion-button>
+          <ion-button color="primary" (click)="deleteExhibition(exhibitionDetails.exhibition_id)" class="custom-button" [attr.data-id]="exhibitionDetails.exhibition_id">전시물 삭제</ion-button>
         </div>
       </div>
-      
-      
-      <!-- <div class="docs texts" *ngIf="exhibitionDetails.exhibitionDocs && exhibitionDetails.exhibitionDocs.length > 0">
-        <ion-icon name="document-outline" class="icons"></ion-icon> Documents
-        <ul class="doc-list">
-          <li *ngFor="let doc of exhibitionDetails.exhibitionDocs" class="doc-item">{{ doc.exhibition_doc_id }}</li>
-        </ul> -->
-      <!-- </div> -->
+    
     </div>
   </div>
 </ion-content>
@@ -89,9 +82,3 @@
     <ion-spinner>로딩 중...</ion-spinner>
   </div>
 </ion-content>
-
-<!-- <ion-content *ngIf="error">
-  <div class="error-message">
-    {{ error }}
-  </div>
-</ion-content> -->
