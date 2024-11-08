@@ -92,8 +92,7 @@ ion-checkbox::part(container) {
   --border-radius: 0px 10px 10px 0;
 }
 .maincontent {
-  display: flex; /* Flexbox 활성화 */
-  height: 100vh; /* 전체 높이를 사용 */
+  display: flex;
   margin-top: -50px;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
