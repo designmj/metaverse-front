@@ -73,10 +73,9 @@ ion-checkbox::part(container) {
 }
 
 .searchbox .searchbar {
-
+  padding: 0;
   height: 42px; /* 검색창의 높이 설정 */
   display: flex;
-  padding: 0;
   --border-radius: 10px 0px 0px 10px;
 
 

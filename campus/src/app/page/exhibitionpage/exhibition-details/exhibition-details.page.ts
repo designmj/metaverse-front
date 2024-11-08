@@ -96,6 +96,39 @@ export class ExhibitionDetailsPage implements OnInit {
     }
   }
 
+  // async deleteExhibition() {
+  //   const alert = await this.alertController.create({
+  //     header: '전시물 삭제',
+  //     message: '정말로 이 전시물을 삭제하시겠습니까?',
+  //     buttons: [
+  //       {
+  //         text: '취소',
+  //         role: 'cancel'
+  //       },
+  //       {
+  //         text: '삭제',
+  //         handler: () => {
+  //           if (this.exhibitionId) {
+  //             this.exhibitionService.deleteExhibition(this.exhibitionId.toString()).subscribe(
+  //               () => {
+  //                 console.log('전시물이 성공적으로 삭제되었습니다.');
+  //                 this.router.navigate(['/exhibitions']); // 전시물 목록 페이지로 이동
+  //               },
+  //               (error) => {
+  //                 console.error('전시물 삭제 실패:', error);
+  //                 this.error = '전시물 삭제에 실패했습니다.';
+  //               }
+  //             );
+  //           }
+  //         }
+  //       }
+  //     ]
+  //   });
+
+  //   await alert.present();
+  // }
+
+  //test 수정
   async deleteExhibition() {
     const alert = await this.alertController.create({
       header: '전시물 삭제',
@@ -116,7 +149,11 @@ export class ExhibitionDetailsPage implements OnInit {
                 },
                 (error) => {
                   console.error('전시물 삭제 실패:', error);
-                  this.error = '전시물 삭제에 실패했습니다.';
+                  if (error.status === 401) {
+                    this.error = '사용자 인증이 필요합니다. 다시 로그인해주세요.';
+                  } else {
+                    this.error = '전시물 삭제에 실패했습니다.';
+                  }
                 }
               );
             }
@@ -124,7 +161,8 @@ export class ExhibitionDetailsPage implements OnInit {
         }
       ]
     });
-
+  
     await alert.present();
   }
+  
 }

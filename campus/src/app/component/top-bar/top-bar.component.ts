@@ -94,4 +94,5 @@ export class TopBarComponent implements OnInit {
 
     await alert.present();
   }
+
 }
