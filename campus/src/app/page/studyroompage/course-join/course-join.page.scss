@@ -75,6 +75,10 @@ ion-col{
   font-family: "pretendard-B", serif;
 }
 
+ion-row {
+  display: flex;
+  align-items: center;
+}
 .class1{
   padding: 40px;
   background-color: #F8F8F8;
@@ -98,6 +102,7 @@ ion-col{
 .join-btn{
   display: flex;
   justify-content: flex-end;
+  cursor: pointer;
 }
 
 .col{
