@@ -35,23 +35,24 @@
 
 .flex-content{
   display: flex;
+  justify-content: center;
 
 }
 .part2 {
   max-width: 1024px;
-  padding: 20px 75px;
+  padding: 20px 40px;
   flex-direction: column;
   justify-content: center; 
   margin: 0 auto;
   position: absolute;
-  bottom: 0;
+  bottom: 20px;
   color: white;
   margin-bottom: 20px;
 }
 
 .part2 .project-name{
   font-family: 'pretendard-B', serif;
-  font-size: 52px;
+  font-size: 2.5rem;
 }
 
 .part2 .team-name{
@@ -168,4 +169,16 @@ ion-button {
   width: 100%; // 버튼을 가로로 꽉 채움
   font-size: 16px; // 글자 크기 조정
   padding: 10px;
+}
+
+/*반응형*/
+@media (min-width: 480px) {
+  h2{
+    font-size: 2.5rem;
+  }
+}
+@media (min-width: 1024px) {
+  h2{
+    font-size: 1.5rem;
+  }
 }

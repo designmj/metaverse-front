@@ -225,6 +225,11 @@ app-card {
 
   margin: 10px; /* 카드 간 간격을 위한 마진 추가 */
 }
+.card-title{
+  text-overflow:ellipsis;
+  overflow: hidden;
+  white-space:nowrap;
+}
 
 /* 한 줄에 4개까지 들어가도록 설정 */
 @media (min-width: 1200px) {
