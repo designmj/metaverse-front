@@ -15,6 +15,7 @@ import{ExhibitionComponent} from "./page/exhibitionpage/exhibition/exhibition.co
 import { CourseService } from './services/course/course.service'; // 서비스 경로 확인
 import { JwtModule } from '@auth0/angular-jwt';
 import { UserDataModalComponent } from './component/user-data-modal/user-data-modal.component';
+import { AdminModule } from './page/studyroompage/\badmin/admin.module';
 
 export function tokenGetter() {
   return localStorage.getItem('token'); // 로컬 스토리에서 토큰 가져오기지
@@ -31,6 +32,7 @@ export function tokenGetter() {
     CommonModule,
     ExhibitionComponent,
     FormsModule, SidemenuComponent,
+    AdminModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,

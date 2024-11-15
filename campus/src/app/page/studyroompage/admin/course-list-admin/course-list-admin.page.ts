@@ -1,20 +1,20 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CourseService } from '../../../services/course/course.service';
+import { CourseService } from '../../../../services/course/course.service';
 import { ModalController } from '@ionic/angular';
-import { LessonCreateModalComponent } from 'src/app/component/lesson-create-modal/lesson-create-modal.component';
+import { CourseCreateModalComponent } from 'src/app/component/course-create-modal/course-create-modal.component';
 
 @Component({
   selector: 'app-classmy',
-  templateUrl: './lesson-list-admin.page.html',
-  styleUrls: ['./lesson-list-admin.page.scss'],
+  templateUrl: './course-list-admin.page.html',
+  styleUrls: ['./course-list-admin.page.scss'],
 })
-export class LessonListAdminPage implements OnInit {
+export class CourseListAdminPage implements OnInit {
   course = {
     id: 1,
     title: '코스명 : NestJS 백엔드 웹 서버 개발',
     instructor: '강사 : 김인용',
-    lessons: Array.from({ length: 30 }, (_, i) => ({
+    courses: Array.from({ length: 30 }, (_, i) => ({
       id: i + 1, // 고유 ID
       name: `${i + 1}. 이 강의는 웹 개발에 대한 중요한 내용을 다룹니다.`
     }))
@@ -29,13 +29,13 @@ export class LessonListAdminPage implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  getPaginatedLessons() {
+  getPaginatedCourses() {
     const start = (this.currentPage - 1) * this.itemsPerPage;
-    return this.course.lessons.slice(start, start + this.itemsPerPage);
+    return this.course.courses.slice(start, start + this.itemsPerPage);
   }
 
   nextPage() {
-    if (this.currentPage * this.itemsPerPage < this.course.lessons.length) {
+    if (this.currentPage * this.itemsPerPage < this.course.courses.length) {
       this.currentPage++;
     }
   }
@@ -56,16 +56,16 @@ export class LessonListAdminPage implements OnInit {
     });
   }
 
-  async createLesson() {
+  async createCourse() {
     const modal = await this.modalController.create({
-      component: LessonCreateModalComponent,
+      component: CourseCreateModalComponent,
       cssClass: 'modal',
     });
     return await modal.present();
   }
 
-  deleteLesson(lessonId: number) {
+  deleteCourse(courseId: number) {
     // 강의 삭제 로직 구현
-    this.course.lessons = this.course.lessons.filter(lesson => lesson.id !== lessonId); // 삭제 후 목록 업데이트
+    this.course.courses = this.course.courses.filter(course => course.id !== courseId); // 삭제 후 목록 업데이트
   }
 }
