@@ -1,0 +1,55 @@
+<ion-content>
+  <div class="layout">
+    <app-sidemenu class="sidemenu"></app-sidemenu>
+    <div class="content-wrapper">
+      <div class="main-container">
+        <div>
+          <div class="project-search">
+            <ion-icon size="large" name="settings-outline"></ion-icon>
+            <h2 class="project-title">강의 관리 대시보드</h2>
+          </div>
+          <div class="class-create">
+            <h6>강의 관련 데이터를 관리하는 페이지</h6>
+          </div>
+        </div>
+
+        <hr/>
+
+        <div class="project-box">
+          <ion-card class="class2">
+            <ion-card-header>
+              <ion-card-title>{{ course.title }}</ion-card-title>
+              <ion-card-subtitle>{{ course.instructor }}</ion-card-subtitle>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-list>
+                <ion-item *ngFor="let lesson of getPaginatedLessons()" href="https://s3-bucket-boardapp.s3.ap-northeast-2.amazonaws.com/exhibitions/videos/4858b7a8-0a64-4ddc-aff6-ff8fd76e73f5_KakaoTalk_Video_2024-11-07-11-51-11.mp4" target="_blank">
+                  <ion-label>강의 번호 : {{ lesson.id }}</ion-label>
+                  <ion-label>강의 이름 : {{ lesson.name }}</ion-label>
+                  <ion-label>미리 보기 :
+                    <ion-button color="tertiary">
+                      <ion-icon name="logo-youtube"></ion-icon>
+                      <h4 class="lesson-button-text">강의보기</h4>
+                    </ion-button>
+                  </ion-label>
+                  <ion-label>
+                    <ion-button color="danger" (click)="deleteLesson(lesson.id)">
+                      <ion-icon name="trash"></ion-icon>
+                      <h4 class="lesson-button-text">강의삭제</h4>
+                    </ion-button>
+                  </ion-label>
+                </ion-item>        
+              </ion-list>
+            </ion-card-content>
+            <div class="pagination">
+              <div class="pagination-buttons">
+                <ion-button color="tertiary" (click)="prevPage()" [disabled]="currentPage === 1">이전</ion-button>
+                <ion-button color="tertiary" (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= course.lessons.length">다음</ion-button>
+              </div>
+            </div>
+          </ion-card>
+        </div>
+      </div>
+    </div>
+  </div>
+</ion-content>

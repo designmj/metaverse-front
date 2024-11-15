@@ -34,6 +34,9 @@
     </ion-item>
 
     <ion-list [ngClass]="{'slide-down': AdminMenuesVisible, 'slide-up': !AdminMenuesVisible}" *ngIf="AdminMenuesVisible">
+      <ion-item button (click)="navigateTo('courselistadmin')">
+        <ion-label>강의 관리</ion-label>
+      </ion-item>
       <ion-item button (click)="createCourse()">
         <ion-label>학습 코스 생성</ion-label>
       </ion-item>
