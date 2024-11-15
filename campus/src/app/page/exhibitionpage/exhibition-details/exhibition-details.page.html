@@ -9,15 +9,17 @@
 <ion-content *ngIf="exhibitionDetails">
   <div class="repcontent">
     <div class="part1">
-      <img class="title-image" [src]="imageUrl || '../../../assets/jpg/1.jpg'" alt="전시물 이미지">
+      <img class="title-image" [src]="imageUrl || '../../../assets/png/5.jpg'" alt="전시물 이미지">
+      <div class="flex-content">
+        <div class="part2">
+          <p class="class-name">{{ exhibitionDetails.generation }} {{ exhibitionDetails.description }}</p>
+          <h2 class="project-name">{{ exhibitionDetails.exhibition_title }}  <span class="team-name">| {{ exhibitionDetails.team_name }}</span></h2>
+        </div>
+     </div>
     </div>
-    <div class="part2">
-      <h2 class="project-name">{{ exhibitionDetails.exhibition_title }}</h2>
-      <p class="team-name">{{ exhibitionDetails.team_name }}</p>
-      <p class="class-name">{{ exhibitionDetails.generation }}</p>
-      <p class="description">{{ exhibitionDetails.description }}</p>
-    </div>
+    
   </div>
+  
 
   <div class="maincontent shadow-box">
     <div class="maxmaincontent">
@@ -66,18 +68,11 @@
       <ion-item class="boundary"></ion-item>
       <div class="parent-container">
         <div class="button-container">
-          <ion-button [routerLink]="['/exhibition-update', exhibitionDetails.exhibition_id]" class="custom-button">수정하기</ion-button>
-          <ion-button expand="block" color="danger" (click)="deleteExhibition()" class="custom-button">전시물 삭제</ion-button>
+          <!-- <ion-button [routerLink]="['/exhibition-update', exhibitionDetails.exhibition_id]" class="custom-button">수정하기</ion-button> -->
+          <ion-button color="primary" (click)="deleteExhibition(exhibitionDetails.exhibition_id)" class="custom-button" [attr.data-id]="exhibitionDetails.exhibition_id">전시물 삭제</ion-button>
         </div>
       </div>
-      
-      
-      <!-- <div class="docs texts" *ngIf="exhibitionDetails.exhibitionDocs && exhibitionDetails.exhibitionDocs.length > 0">
-        <ion-icon name="document-outline" class="icons"></ion-icon> Documents
-        <ul class="doc-list">
-          <li *ngFor="let doc of exhibitionDetails.exhibitionDocs" class="doc-item">{{ doc.exhibition_doc_id }}</li>
-        </ul> -->
-      <!-- </div> -->
+    
     </div>
   </div>
 </ion-content>
@@ -85,11 +80,5 @@
 <ion-content *ngIf="isLoading">
   <div class="loading">
     <ion-spinner>로딩 중...</ion-spinner>
-  </div>
-</ion-content>
-
-<ion-content *ngIf="error">
-  <div class="error-message">
-    {{ error }}
   </div>
 </ion-content>

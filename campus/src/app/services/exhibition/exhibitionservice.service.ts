@@ -101,14 +101,22 @@ export class ExhibitionService {
     });
   }
 
-  // Delete: 전시물 삭제
-  deleteExhibition(id: string): Observable<any> {
-    return forkJoin({
-      exhibition: this.http.delete(`${this.apiUrl}/exhibitions/${id}`),
-      intro: this.http.delete(`${this.apiUrl}/exhibition-intro/${id}`),
-      docs: this.http.delete(`${this.apiUrl}/exhibition-docs/${id}`),
-      members: this.http.delete(`${this.apiUrl}/exhibition-members/${id}`)
-    });
+  // // Delete: 전시물 삭제
+  // deleteExhibition(id: string): Observable<any> {
+  //   return forkJoin({
+  //     exhibition: this.http.delete(`${this.apiUrl}/exhibitions/${id}`),
+  //     intro: this.http.delete(`${this.apiUrl}/exhibition-intro/${id}`),
+  //     docs: this.http.delete(`${this.apiUrl}/exhibition-docs/${id}`),
+  //     members: this.http.delete(`${this.apiUrl}/exhibition-members/${id}`)
+  //   });
+  // }
+  // Delete: 전시물 삭제 수정
+
+  // 전시물 삭제
+  deleteExhibition(exhibitionId: number): Observable<any> {
+    const headers = this.validateToken()
+
+    return this.http.delete<any>(`${this.apiUrl}/exhibitions/${exhibitionId}`, { headers });
   }
 }
 

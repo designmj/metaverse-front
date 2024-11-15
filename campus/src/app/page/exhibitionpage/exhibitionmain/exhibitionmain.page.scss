@@ -73,10 +73,9 @@ ion-checkbox::part(container) {
 }
 
 .searchbox .searchbar {
-
+  padding: 0;
   height: 42px; /* 검색창의 높이 설정 */
   display: flex;
-  padding: 0;
   --border-radius: 10px 0px 0px 10px;
 
 
@@ -93,8 +92,7 @@ ion-checkbox::part(container) {
   --border-radius: 0px 10px 10px 0;
 }
 .maincontent {
-  display: flex; /* Flexbox 활성화 */
-  height: 100vh; /* 전체 높이를 사용 */
+  display: flex;
   margin-top: -50px;
   border-top-left-radius: 30px;
   border-top-right-radius: 30px;
@@ -226,6 +224,11 @@ app-card {
   min-width: 300px; /* 최소 너비를 200px로 설정 */
 
   margin: 10px; /* 카드 간 간격을 위한 마진 추가 */
+}
+.card-title{
+  text-overflow:ellipsis;
+  overflow: hidden;
+  white-space:nowrap;
 }
 
 /* 한 줄에 4개까지 들어가도록 설정 */

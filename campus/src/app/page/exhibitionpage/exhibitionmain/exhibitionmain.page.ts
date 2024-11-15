@@ -32,7 +32,7 @@ export class ExhibitionmainPage implements OnInit {
       (response: any) => {
         console.log('API 응답:', response);
         this.exhibitions = response.exhibitions; // 새로운 전시 목록 로드
-  
+        
         // 기수 필터링
         this.filterExhibitions();
   

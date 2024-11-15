@@ -26,7 +26,8 @@ export class CourseJoinPage implements OnInit {
 
   ngOnInit() {
     this.loadCourses(); // 컴포넌트가 초기화될 때 강의 목록을 불러옴
-    this.courseJoinUser(); //이게 실행되면 페이지에 load가 되지 않는 오류가 ㅣㅇㅆ음
+    this.courseJoinUser(); //이게 실행되면 페이지에 load가 되지 않는 오류가 있음
+    this.loadRegisteredCourses(); //등록된 강의 로딩
   }
 
   async loadCourses() {
@@ -37,6 +38,14 @@ export class CourseJoinPage implements OnInit {
       console.log(response.data)
     } catch (error) {
       console.error('Error loading courses', error);
+    }
+  }
+
+  // 등록한 강의 로드
+  loadRegisteredCourses() {
+    const registeredCourses = localStorage.getItem('registeredCourses');
+    if (registeredCourses) {
+      this.registeredCourses = new Set(JSON.parse(registeredCourses));
     }
   }
 
@@ -120,6 +129,9 @@ export class CourseJoinPage implements OnInit {
       console.error('강의 신청 중 오류 발생:', error);
       alert('강의 신청 중 오류가 발생했습니다.');
     }
+    //임시로 작성된 코드임, 등록한 코스 저장하기
+    this.registeredCourses.add(courseId);
+    localStorage.setItem('registeredCourses', JSON.stringify(Array.from(this.registeredCourses)));
   }
 
   //현재 강의를 신청했는지에 대한 변수

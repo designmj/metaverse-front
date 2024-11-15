@@ -17,7 +17,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { UserDataModalComponent } from './component/user-data-modal/user-data-modal.component';
 
 export function tokenGetter() {
-  return localStorage.getItem('token'); // 로컬 스토리지에서 토큰 가져오기
+  return localStorage.getItem('token'); // 로컬 스토리에서 토큰 가져오기지
 }
 
 @NgModule({

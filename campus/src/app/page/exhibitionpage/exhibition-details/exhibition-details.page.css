@@ -16,10 +16,9 @@
 
 .repcontent {
   width: 100%;
-  height: 350px;
   background: linear-gradient(213deg, #FDF2FF 0%, #E9F1FF 100%);
   display: flex;
-  flex-direction: row; /* 수평 배열 */
+  flex-direction: column; /* 수평 배열 */
   align-items: center; /* 세로 중앙 정렬 */
   justify-content: center; /* 가로 중앙 정렬 */
   margin-bottom: 50px;
@@ -27,12 +26,14 @@
 
 .part1 {
   display: flex;
+  margin: 20px 0;
 }
 
 .title-image {
   width: 500px;
   height: 300px;
   border-radius: 10px;
+  object-fit: cover;
 }
 
 .part2 {
@@ -61,8 +62,9 @@
 }
 
 .maxmaincontent {
-  max-width: 1200px;
+  max-width: 1024px;
   margin: auto;
+  padding: 20px;
 }
 
 .texts {

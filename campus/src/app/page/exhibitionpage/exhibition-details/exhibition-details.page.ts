@@ -95,36 +95,78 @@ export class ExhibitionDetailsPage implements OnInit {
       });
     }
   }
-
-  async deleteExhibition() {
-    const alert = await this.alertController.create({
-      header: '전시물 삭제',
-      message: '정말로 이 전시물을 삭제하시겠습니까?',
-      buttons: [
-        {
-          text: '취소',
-          role: 'cancel'
-        },
-        {
-          text: '삭제',
-          handler: () => {
-            if (this.exhibitionId) {
-              this.exhibitionService.deleteExhibition(this.exhibitionId.toString()).subscribe(
-                () => {
-                  console.log('전시물이 성공적으로 삭제되었습니다.');
-                  this.router.navigate(['/exhibitions']); // 전시물 목록 페이지로 이동
-                },
-                (error) => {
-                  console.error('전시물 삭제 실패:', error);
-                  this.error = '전시물 삭제에 실패했습니다.';
+//프로젝트 삭제
+  async deleteExhibition(exhibition_id: number) {
+    const confirmAlert = await this.alertController.create({
+        header: '삭제 확인',
+        message: '프로젝트를 삭제하시겠습니까?',
+        buttons: [
+            {
+                text: '취소',
+                role: 'cancel',
+                cssClass: 'secondary',
+                handler: () => {
+                    console.log('삭제가 취소되었습니다.');
                 }
-              );
+            },
+            {
+                text: '삭제',
+                handler: async () => {
+                    console.log('삭제할 exhibition_id:', exhibition_id);
+                    this.exhibitionService.deleteExhibition(exhibition_id).subscribe(
+                        async () => {
+                            console.log('프로젝트가 성공적으로 삭제되었습니다.');
+                            const successAlert = await this.alertController.create({
+                                header: '성공',
+                                message: '프로젝트가 성공적으로 삭제되었습니다.',
+                                buttons: [
+                                    {
+                                        text: '확인',
+                                        handler: () => {
+                                            // 확인 버튼 클릭 시 메인 페이지로 이동하고 리로드
+                                            this.router.navigate(['/exhibitionmain']).then(() => {
+                                                window.location.reload();
+                                            });
+                                        }
+                                    }
+                                ]
+                            });
+                            await successAlert.present();
+                        },
+                        async (error) => {
+                            console.error('프로젝트 삭제 실패:', error);
+                            if (error.status === 401) {
+                                this.error = '사용자 인증이 필요합니다. 다시 로그인해주세요.';
+                            } else {
+                                this.error = '프로젝트 삭제에 실패했습니다.';
+                                this.handleError(error);
+                            }
+                        }
+                    );
+                }
             }
-          }
-        }
-      ]
+        ]
+    });
+
+    await confirmAlert.present();
+}
+
+private async handleError(error: any) {
+    let errorMessage: string;
+
+    if (error.status === 401) {
+        errorMessage = '사용자 인증이 필요합니다. 다시 로그인해주세요.';
+    } else {
+        errorMessage = '전시물 삭제에 실패했습니다.';
+    }
+
+    // 오류 메시지를 알림으로 표시
+    const alert = await this.alertController.create({
+        header: '오류',
+        message: errorMessage,
+        buttons: ['확인']
     });
 
     await alert.present();
-  }
+}
 }
