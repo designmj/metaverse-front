@@ -55,6 +55,9 @@ const routes: Routes = [
   {
     path: 'coursemy',
     loadChildren: () => import('./page/studyroompage/course-my/course-my.module').then(m => m.CourseMyPageModule)
+  },  {
+    path: 'lessonlistadmin',
+    loadChildren: () => import('./page/studyroompage/lesson-list-admin/lesson-list-admin.module').then(m => m.LessonListAdminPageModule)
   },
   {
     path: 'projectsearch',

@@ -34,13 +34,15 @@
     </ion-item>
 
     <ion-list [ngClass]="{'slide-down': AdminMenuesVisible, 'slide-up': !AdminMenuesVisible}" *ngIf="AdminMenuesVisible">
-      <ion-item button (click)="createCourse()">
-        <ion-label>학습 코스 생성</ion-label>
+      <ion-item button (click)="navigateTo('lessonlistadmin')">
+        <ion-label>강의(레슨) 관리</ion-label>
       </ion-item>
-      <ion-item button (click)="createLesson()">
-        <ion-label>코스별 강의 영상 등록</ion-label>
+      <ion-item button (click)="navigateTo('courselistadmin')">
+        <ion-label>코스(클래스) 관리</ion-label>
+      </ion-item>
+      <ion-item button (click)="createCourse()">
+        <ion-label> - 학습 코스 생성(코스관리로 이동예정)</ion-label>
       </ion-item>
     </ion-list>
-
   </ion-list>
 </aside>

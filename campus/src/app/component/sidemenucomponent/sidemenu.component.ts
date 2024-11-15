@@ -5,7 +5,6 @@ import {NgForOf} from "@angular/common";
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { CourseCreateModalComponent } from '../course-create-modal/course-create-modal.component';
-import { LessonCreateModalComponent } from '../lesson-create-modal/lesson-create-modal.component';
 
 @Component({
   selector: 'app-sidemenu',
@@ -26,8 +25,10 @@ export class SidemenuComponent {
   AdminMenuesVisible = false;
 
 
-  constructor(    private modalController: ModalController,
-    private router: Router) {}
+  constructor(
+    private modalController: ModalController,
+    private router: Router
+  ) {}
 
   toggleCourses() {
     this.coursesVisible = !this.coursesVisible;
@@ -46,14 +47,6 @@ export class SidemenuComponent {
   async createCourse() {
     const modal = await this.modalController.create({
       component: CourseCreateModalComponent,
-      cssClass: 'modal',
-    });
-    return await modal.present();
-  }
-
-  async createLesson() {
-    const modal = await this.modalController.create({
-      component: LessonCreateModalComponent,
       cssClass: 'modal',
     });
     return await modal.present();
