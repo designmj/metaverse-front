@@ -8,12 +8,13 @@ import { DocNameResponseData } from 'src/app/models/course/doc_name/doc_name-res
 import { CourseDocResponseData } from 'src/app/models/course/course_doc/course_doc-response.interface';
 import { VideoTopicResponseData } from 'src/app/models/course/video_topic/video_topic-response.interface';
 import { VideoResponseData } from 'src/app/models/course/video/video-response.interface';
+import { CoursePaginatedResponse } from 'src/app/models/course/courses/course-paginated-response.interface';
 
 @Injectable({
   providedIn: 'root',
 })
 export class CourseService {
-  private courseApiUrl = 'http://localhost:3000/courses'; // 강의 관련 API URL
+  private courseApiUrl = 'http://localhost:3000/api/courses';
 
   constructor(private http: HttpClient) {}
 
@@ -52,6 +53,12 @@ export class CourseService {
   getAllCourses(): Observable<ApiResponse<CourseResponseDto[]>> {
     const headers = this.getAuthHeaders();
     return this.http.get<ApiResponse<CourseResponseDto[]>>(this.courseApiUrl, { headers });
+  }
+
+  // 페이징처리된 강의 전체 목록을 불러오는 메서드
+  getPaginatedCourses(page: number, limit: number): Observable<ApiResponse<CoursePaginatedResponse>> {
+    const headers = this.getAuthHeaders();
+    return this.http.get<ApiResponse<CoursePaginatedResponse>>(`${this.courseApiUrl}/paginated?page=${page}&limit=${limit}`, { headers });
   }
 
   // 특정 강의 정보를 불러오는 메서드

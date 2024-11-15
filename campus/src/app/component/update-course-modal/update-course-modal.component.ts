@@ -27,8 +27,8 @@ export class UpdateCourseModalComponent  implements OnInit {
     private alertController: AlertController
   ) {
     this.courseForm = this.formBuilder.group({
-      course_title: ['', Validators.required],
-      instructor_name: ['', Validators.required],
+      title: ['', Validators.required],
+      instructor: ['', Validators.required],
       description: ['', Validators.required],
     });
   }
@@ -37,8 +37,8 @@ export class UpdateCourseModalComponent  implements OnInit {
     if (this.course) {
       // 전달받은 강의 데이터를 폼에 초기값으로 설정
       this.courseForm.patchValue({
-        course_title: this.course.course_title,
-        instructor_name: this.course.instructor_name,
+        title: this.course.title,
+        instructor: this.course.instructor,
         description: this.course.description,
       });
     }
@@ -49,7 +49,7 @@ export class UpdateCourseModalComponent  implements OnInit {
       const courseData = { ...this.course, ...this.courseForm.value }; // 기존 데이터와 폼 데이터를 병합
 
       try {
-        const response = await firstValueFrom(this.courseService.updateCourse(this.course.course_id, courseData));
+        const response = await firstValueFrom(this.courseService.updateCourse(this.course.id, courseData));
         console.log('Course updated successfully:', response);
         await this.showAlert('성공', '클래스가 성공적으로 수정되었습니다.');
       } catch (error) {

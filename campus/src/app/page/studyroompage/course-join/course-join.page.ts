@@ -75,7 +75,7 @@ export class CourseJoinPage implements OnInit {
         // 사용자가 수정을 완료하고 데이터를 반환했을 때
         try {
           const updatedCourse = result.data;
-          const response = await firstValueFrom(this.courseService.updateCourse(course.course_id, updatedCourse));
+          const response = await firstValueFrom(this.courseService.updateCourse(course.id, updatedCourse));
           console.log('Course updated successfully:', response);
 
           // 3. 업데이트 후 강의 목록을 다시 불러옴

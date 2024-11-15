@@ -14,7 +14,7 @@ import {UpdateCourseModalComponent} from "../update-course-modal/update-course-m
 })
 export class CourseTitleComponent  implements OnInit {
   courses : CourseResponseDto[] = [];
-  course_id: number = 14;  // courseId 저장
+  id: number = 14;  // courseId 저장
 
   constructor(
     private courseService : CourseService,
@@ -28,7 +28,7 @@ export class CourseTitleComponent  implements OnInit {
   //코스에 대한 data 반환 : CourseResponseDto
   async loadTitleCourses() {
     try {
-      const response: ApiResponse<CourseResponseDto[]> = await firstValueFrom(this.courseService.getOneCourses(this.course_id));
+      const response: ApiResponse<CourseResponseDto[]> = await firstValueFrom(this.courseService.getOneCourses(this.id));
       // response.data가 배열이 아닌 단일 객체일 경우 배열로 변환
       if (!Array.isArray(response.data)) {
         this.courses = [response.data]; // 배열로 변환
