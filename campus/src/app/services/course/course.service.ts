@@ -39,8 +39,10 @@ export class CourseService {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${token}`, // 인증 헤더 추가
     });
-
-    return this.http.post<ApiResponse<CourseResponseDto>>(`${this.courseApiUrl}/register`, courseData, { headers });
+    
+    const createdCourse = this.http.post<ApiResponse<CourseResponseDto>>(`${this.courseApiUrl}/register`, courseData, { headers });
+    console.log("create a Course successfully : " + createdCourse)
+    return createdCourse;
   }
 
 

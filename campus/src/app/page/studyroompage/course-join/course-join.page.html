@@ -10,28 +10,42 @@
             <h2 class="project-title">학습 코스 신청</h2>
           </div>
           <div class="class-create">
-            <h6>원하는 학습 코스를 살펴보고 신청해 보세요</h6>
+            <h6>현재 개설된 학습 코스를 살펴보고 신청해 보세요</h6>
           </div>
         </div>
 
         <hr/>
 
-        <div class="project-box" *ngFor="let course of courses; let i = index">
-          <ion-grid class="class1">
-            <ion-row>
-              <ion-col>{{ i + 1 }}</ion-col>
-              <ion-col size="2">{{ course.instructor_name }}</ion-col> <!-- 강사 이름 -->
-              <ion-col size="6" class="class-title">
-                <ion-col class="col">{{ course.course_title }}</ion-col> <!-- 강의 제목 -->
-                <br />
-                <ion-col class="class-team">{{ course.description }}</ion-col> <!-- 강의 설명 -->
+        <div class="project-box" >
+          <ion-grid class="class1" *ngFor="let course of courses; let i = index">
+            <ion-row >
+              <ion-col size="1">
+                <ion-text>{{ course.course_id }}</ion-text>
               </ion-col>
-              <ion-col class="join-btn" (click)="!isRegistered(course.course_id) ? joinCourse(course.course_id) : null">
-                {{ isRegistered(course.course_id) ? '취소하기' : '신청하기' }}
+              <ion-col size="1.5">
+                <ion-label>{{ course.instructor_name }}</ion-label>
               </ion-col>
               <ion-col>
-                <ion-icon class="delete-icon" name="trash" (click)="deleteCourse(course.course_id)"></ion-icon>
-                <ion-icon class="update-icon" name="heart" (click)="updateCourse(course)"></ion-icon>
+                <ion-label>{{ course.course_title }}</ion-label>
+              </ion-col>
+              <ion-col>
+                <ion-label>{{ course.description }}</ion-label>
+              </ion-col>
+              <ion-col size="1.5">
+                <ion-label>
+                  <ion-button color="tertiary" (click)="getCourseInfo(course.course_id)">
+                    <ion-icon name="information-circle-outline"></ion-icon>
+                    <h4 class="course-button-text">코스정보</h4>
+                  </ion-button>
+                </ion-label>
+              </ion-col>
+              <ion-col size="1.5">
+                <ion-label>
+                  <ion-button color="" (click)="!isRegistered(course.course_id) ? joinCourse(course.course_id) : null">
+                    <ion-icon name="add"></ion-icon>
+                    <h4 class="course-button-text">{{ isRegistered(course.course_id) ? '취소하기' : '신청하기' }}</h4>
+                  </ion-button>
+                </ion-label>
               </ion-col>
             </ion-row>
           </ion-grid>

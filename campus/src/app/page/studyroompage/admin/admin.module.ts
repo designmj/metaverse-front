@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { AdminRoutingModule } from './admin-routing.module';
 import { LessonListAdminPage } from './lesson-list-admin/lesson-list-admin.page';
@@ -13,7 +13,8 @@ import { SidemenuComponent } from 'src/app/component/sidemenucomponent/sidemenu.
     FormsModule,
     IonicModule,
     AdminRoutingModule,
-    SidemenuComponent
+    SidemenuComponent,
+    ReactiveFormsModule
   ],
   declarations: [LessonListAdminPage, CourseListAdminPage]
 })
