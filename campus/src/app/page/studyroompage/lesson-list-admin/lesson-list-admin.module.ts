@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
-import { CourseListAdminPageRoutingModule } from './course-list-admin-routing.module';
-import { CourseListAdminPage } from './course-list-admin.page';
+import { LessonListAdminPageRoutingModule } from './lesson-list-admin-routing.module';
+import { LessonListAdminPage } from './lesson-list-admin.page';
 import {SidemenuComponent} from "../../../component/sidemenucomponent/sidemenu.component";
 import {CourseTitleComponent} from "../../../component/course-title/course-title.component";
 import {DocTopicComponent} from "../../../component/doc-topic/doc-topic.component";
@@ -13,9 +13,9 @@ import {DocTopicComponent} from "../../../component/doc-topic/doc-topic.componen
     CommonModule,
     FormsModule,
     IonicModule,
-    CourseListAdminPageRoutingModule,
+    LessonListAdminPageRoutingModule,
     SidemenuComponent
   ],
-    declarations: [CourseListAdminPage]
+    declarations: [LessonListAdminPage]
 })
-export class CourseListAdminPageModule {}
+export class LessonListAdminPageModule {}

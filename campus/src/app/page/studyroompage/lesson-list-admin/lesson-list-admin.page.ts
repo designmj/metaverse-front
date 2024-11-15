@@ -1,13 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { CourseService } from '../../../services/course/course.service';
+import { ModalController } from '@ionic/angular';
+import { LessonCreateModalComponent } from 'src/app/component/lesson-create-modal/lesson-create-modal.component';
 
 @Component({
   selector: 'app-classmy',
-  templateUrl: './course-list-admin.page.html',
-  styleUrls: ['./course-list-admin.page.scss'],
+  templateUrl: './lesson-list-admin.page.html',
+  styleUrls: ['./lesson-list-admin.page.scss'],
 })
-export class CourseListAdminPage implements OnInit {
+export class LessonListAdminPage implements OnInit {
   course = {
     id: 1,
     title: '코스명 : NestJS 백엔드 웹 서버 개발',
@@ -23,6 +25,7 @@ export class CourseListAdminPage implements OnInit {
 
   constructor(
     private courseService: CourseService,
+    private modalController: ModalController,
     private route: ActivatedRoute
   ) {}
 
@@ -51,6 +54,14 @@ export class CourseListAdminPage implements OnInit {
         // 코스 데이터를 가져오는 로직 추가 가능
       }
     });
+  }
+
+  async createLesson() {
+    const modal = await this.modalController.create({
+      component: LessonCreateModalComponent,
+      cssClass: 'modal',
+    });
+    return await modal.present();
   }
 
   deleteLesson(lessonId: number) {
