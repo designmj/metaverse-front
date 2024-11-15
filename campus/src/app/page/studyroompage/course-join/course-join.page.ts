@@ -57,6 +57,10 @@ export class CourseJoinPage implements OnInit {
     return await modal.present();
   }
 
+  async getCourseInfo(courseId: number){
+
+  }
+
   async updateCourse(course: CourseResponseDto) {
    // 1. 모달을 열어서 기존 강의 데이터를 전달하고 수정할 수 있게 함
     const modal = await this.modalController.create({
@@ -71,7 +75,7 @@ export class CourseJoinPage implements OnInit {
         // 사용자가 수정을 완료하고 데이터를 반환했을 때
         try {
           const updatedCourse = result.data;
-          const response = await firstValueFrom(this.courseService.updateCourse(course.course_id, updatedCourse));
+          const response = await firstValueFrom(this.courseService.updateCourse(course.id, updatedCourse));
           console.log('Course updated successfully:', response);
 
           // 3. 업데이트 후 강의 목록을 다시 불러옴

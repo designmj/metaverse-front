@@ -27,8 +27,8 @@ export class CourseCreateModalComponent implements OnInit {
     private alertController: AlertController // AlertController 주입
   ) {
     this.courseForm = this.formBuilder.group({
-      course_title: ['', Validators.required],
-      instructor_name: ['', Validators.required],
+      title: ['', Validators.required],
+      instructor: ['', Validators.required],
       description: ['', Validators.required],
       generation: ['', Validators.required],
     });
@@ -40,6 +40,7 @@ export class CourseCreateModalComponent implements OnInit {
   async onSubmit() {
     if (this.courseForm.valid) {
       const courseData = this.courseForm.value;
+      alert(JSON.stringify(courseData));
 
       try {
         // firstValueFrom을 사용하여 Observable 처리

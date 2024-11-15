@@ -21,10 +21,10 @@
             <ion-grid>
               <ion-row>
                 <ion-col size="">
-                  <ion-card-title>{{ course.title }}</ion-card-title>
+                  <!-- <ion-card-title>{{ course.title }}</ion-card-title> -->
                 </ion-col>
                 <ion-col size="4">
-                  <ion-card-title>{{ course.instructor }}</ion-card-title>
+                  <!-- <ion-card-title>{{ courses.instructor }}</ion-card-title> -->
                 </ion-col>
                 <ion-col size="2">
                   <ion-label>
@@ -44,13 +44,19 @@
                 <ion-grid>
                   <ion-row>
                     <ion-col size="1">
-                      <ion-label>번호</ion-label>
+                      <ion-label>코스번호</ion-label>
+                    </ion-col>
+                    <ion-col size="1">
+                      <ion-label>기수</ion-label>
                     </ion-col>
                     <ion-col>
                       <ion-label>코스제목</ion-label>
                     </ion-col>
                     <ion-col size="1.5">
-                      <ion-label>재생</ion-label>
+                      <ion-label>담당강사</ion-label>
+                    </ion-col>
+                    <ion-col size="1.5">
+                      <ion-label>상세정보</ion-label>
                     </ion-col>
                     <ion-col size="1.5">
                       <ion-label>삭제</ion-label>
@@ -60,22 +66,28 @@
                   <!-- 컬럼명 섹션 End -->
 
                   <!-- 컨텐츠 리스트 섹션 -->
-                  <ion-row *ngFor="let course of getPaginatedCourses()" href="https://s3-bucket-boardapp.s3.ap-northeast-2.amazonaws.com/exhibitions/videos/4858b7a8-0a64-4ddc-aff6-ff8fd76e73f5_KakaoTalk_Video_2024-11-07-11-51-11.mp4" target="_blank">
+                  <ion-row *ngFor="let course of courses" target="_blank">
                     <ion-col size="1">
                       <ion-text>{{ course.id }}</ion-text>
                     </ion-col>
-                    <ion-col>
-                      <ion-label>{{ course.name }}</ion-label>
+                    <ion-col size="1">
+                      <ion-text>{{ course.generation }}</ion-text>
+                    </ion-col>
+                    <ion-col size="">
+                      <ion-label>{{ course.title }}</ion-label>
+                    </ion-col>
+                    <ion-col size="1.5">
+                      <ion-label>{{ course.instructor }}</ion-label>
                     </ion-col>
                     <ion-col size="1.5">
                       <ion-label>
-                        <ion-button color="tertiary">
-                          <ion-icon name="logo-youtube"></ion-icon>
+                        <ion-button color="tertiary" (click)="viewCourseDetail(course.id)">
+                          <ion-icon name="information-circle-outline"></ion-icon>
                           <h4 class="course-button-text">코스정보</h4>
                         </ion-button>
                       </ion-label>
                     </ion-col>
-                    <ion-col size="1.5">
+                  <ion-col size="1.5">
                       <ion-label>
                         <ion-button color="danger" (click)="deleteCourse(course.id)">
                           <ion-icon name="trash"></ion-icon>
@@ -92,11 +104,27 @@
 
             <!-- 컨텐츠 페이징 섹션 -->
             <div class="pagination">
+              <ion-button 
+              [disabled]="currentPage === 1" 
+              (click)="changePage(currentPage - 1)">
+              Previous
+              </ion-button>
+      
+              <span>Page {{ currentPage }} of {{ totalPages }}</span>
+      
+              <ion-button 
+              [disabled]="currentPage === totalPages" 
+              (click)="changePage(currentPage + 1)">
+              Next
+              </ion-button>
+          </div>
+            <!-- <div class="pagination">
               <div class="pagination-buttons">
-                <ion-button color="tertiary" (click)="prevPage()" [disabled]="currentPage === 1">이전</ion-button>
-                <ion-button color="tertiary" (click)="nextPage()" [disabled]="currentPage * itemsPerPage >= course.courses.length">다음</ion-button>
+                <ion-button color="tertiary" (click)="changePage(currentPage - 1)">이전</ion-button>
+                <span>Page {{ currentPage }} of {{ totalPages }}</span>
+                <ion-button color="tertiary" (click)="changePage(currentPage + 1)">다음</ion-button>
               </div>
-            </div>
+            </div> -->
             <!-- 컨텐츠 페이징 섹션 End-->
           </ion-card>
         </div>
