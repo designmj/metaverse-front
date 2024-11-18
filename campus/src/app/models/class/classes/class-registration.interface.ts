@@ -1,6 +1,6 @@
-import { Registration } from '../../enums/role.enums';
+import { ClassRegistrationStatus } from "../../enums/class-registration-status.enum";
 
 export interface CreateClassRegistrationDto {
   class_reporting_date: String;
-  class_registration_status: Registration;
+  class_registration_status: ClassRegistrationStatus;
 }

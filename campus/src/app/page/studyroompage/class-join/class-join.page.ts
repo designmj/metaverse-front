@@ -6,7 +6,7 @@ import { firstValueFrom } from 'rxjs';
 import { ClassResponseDto } from '../../../models/class/classes/class-response.interface';
 import { ApiResponse } from 'src/app/models/common/api-response.interface';
 import { CreateClassRegistrationDto } from '../../../models/class/classes/class-registration.interface';
-import { Registration } from '../../../models/enums/role.enums';
+import { ClassRegistrationStatus } from 'src/app/models/enums/class-registration-status.enum';
 
 @Component({
   selector: 'app-classsignup',
@@ -119,7 +119,7 @@ export class ClassJoinPage implements OnInit {
       const classReportingDate = await this.getCurrentDate(); // Date 객체 가져오기
       const registrationData: CreateClassRegistrationDto = {
         class_reporting_date: classReportingDate.toISOString(), // ISO 문자열로 변환하여 설정
-        class_registration_status: Registration.PENDING,
+        class_registration_status: ClassRegistrationStatus.PENDING,
       };
 
       const response: ApiResponse<CreateClassRegistrationDto> = await firstValueFrom(
