@@ -7,8 +7,8 @@ import { IonicModule } from '@ionic/angular';
 import { ExhibitionDetailsPageRoutingModule } from './exhibition-details-routing.module';
 
 import { ExhibitionDetailsPage } from './exhibition-details.page';
-import {TopBarComponent} from "../../../component/top-bar/top-bar.component";
-import {CardComponent} from "../../../component/cardcomponent/cardcomponent.component";
+import { TopBarComponent } from "../../../component/top-bar/top-bar.component";
+import { CardComponent } from "../../../component/cardcomponent/cardcomponent.component";
 
 @NgModule({
   imports: [

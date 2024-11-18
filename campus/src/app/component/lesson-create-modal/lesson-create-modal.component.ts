@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { CourseService } from '../../services/course/course.service';
+import { ClassService } from '../../services/class/class.service';
 import { AlertController } from '@ionic/angular';
 import { firstValueFrom } from 'rxjs';
 import { IonicModule } from '@ionic/angular';
@@ -23,7 +23,7 @@ export class LessonCreateModalComponent implements OnInit {
 
   lessonForm!: FormGroup;
 
-  courses = [
+  classes = [
     // 예시 코스 데이터
     { id: 1, title: 'NestJS 백엔드 웹 서버 개발', instructor: '김강사', isExpanded: false },
     { id: 2, title: 'Angular 프론트엔드 기획과 데이터바인딩', instructor: '최강사', isExpanded: false },
@@ -44,11 +44,11 @@ export class LessonCreateModalComponent implements OnInit {
 
   constructor(
     private formBuilder: FormBuilder,
-    private courseService: CourseService, // 서비스 주입
+    private classService: ClassService, // 서비스 주입
     private alertController: AlertController // AlertController 주입
   ) {
     this.lessonForm = this.formBuilder.group({
-      course_id: ['', Validators.required], // 코스 선택 필드 추가
+      class_id: ['', Validators.required], // 코스 선택 필드 추가
       lesson_title: ['', Validators.required],
       instructor_name: ['', Validators.required],
       description: ['', Validators.required],
@@ -63,13 +63,13 @@ export class LessonCreateModalComponent implements OnInit {
 
       try {
         // firstValueFrom을 사용하여 Observable 처리
-        const response = await firstValueFrom(this.courseService.createLesson(lessonData));
+        const response = await firstValueFrom(this.classService.createLesson(lessonData));
         console.log('Lesson created successfully:', response);
 
         // 성공 시 Alert 띄우기
         await this.showAlert('성공', '강의가 성공적으로 업로드되었습니다.');
       } catch (error) {
-        console.error('Error creating course:', error);
+        console.error('Error creating class:', error);
         // 오류 발생 시 Alert 띄우기
         await this.showAlert('실패', '강의 생성에 실패했습니다.');
       }

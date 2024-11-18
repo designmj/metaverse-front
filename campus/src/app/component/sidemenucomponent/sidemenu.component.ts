@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { IonicModule, ModalController } from '@ionic/angular';
-import {RouterLink, RouterLinkActive} from "@angular/router";
-import {NgForOf} from "@angular/common";
+import { RouterLink, RouterLinkActive } from "@angular/router";
+import { NgForOf } from "@angular/common";
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { CourseCreateModalComponent } from '../course-create-modal/course-create-modal.component';
+import { ClassCreateModalComponent } from '../class-create-modal/class-create-modal.component';
 
 @Component({
   selector: 'app-sidemenu',
@@ -20,7 +20,7 @@ import { CourseCreateModalComponent } from '../course-create-modal/course-create
   standalone: true
 })
 export class SidemenuComponent {
-  coursesVisible = false;
+  classesVisible = false;
   projectsVisible = false;
   AdminMenuesVisible = false;
 
@@ -30,8 +30,8 @@ export class SidemenuComponent {
     private router: Router
   ) {}
 
-  toggleCourses() {
-    this.coursesVisible = !this.coursesVisible;
+  toggleClasses() {
+    this.classesVisible = !this.classesVisible;
   }
   toggleAdminMenues() {
     this.AdminMenuesVisible = !this.AdminMenuesVisible;
@@ -44,9 +44,9 @@ export class SidemenuComponent {
     this.router.navigate([page]);
   }
 
-  async createCourse() {
+  async createClass() {
     const modal = await this.modalController.create({
-      component: CourseCreateModalComponent,
+      component: ClassCreateModalComponent,
       cssClass: 'modal',
     });
     return await modal.present();

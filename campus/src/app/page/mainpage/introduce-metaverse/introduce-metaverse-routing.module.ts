@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
 import { IntroduceMetaversePage } from './introduce-metaverse.page';
 
 const routes: Routes = [

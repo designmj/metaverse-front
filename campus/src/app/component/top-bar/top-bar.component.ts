@@ -1,10 +1,10 @@
-import {Component, OnInit} from '@angular/core';
-import {IonicModule} from '@ionic/angular';
-import {RouterLink, RouterLinkActive} from "@angular/router";
-import {CommonModule} from '@angular/common';
-import {AlertController, ModalController} from '@ionic/angular';
-import {AuthService} from '../../services/auth/auth.service';
-import {JoinModalComponent} from "../join-modal/join-modal.component";
+import { Component, OnInit } from '@angular/core';
+import { IonicModule } from '@ionic/angular';
+import { RouterLink, RouterLinkActive } from "@angular/router";
+import { CommonModule } from '@angular/common';
+import { AlertController, ModalController } from '@ionic/angular';
+import { AuthService } from '../../services/auth/auth.service';
+import { JoinModalComponent } from "../join-modal/join-modal.component";
 import { JwtHelperService } from '@auth0/angular-jwt';
 import { UserDataModalComponent } from '../user-data-modal/user-data-modal.component';
 
@@ -20,6 +20,7 @@ import { UserDataModalComponent } from '../user-data-modal/user-data-modal.compo
     CommonModule,
   ],
 })
+
 export class TopBarComponent implements OnInit {
   isLoggedIn = false;
   userName: string | null = null;

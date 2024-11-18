@@ -7,12 +7,12 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class ExhibitionService {
-  private apiUrl = 'http://localhost:3000'; // 실제 API URL로 변경하세요.
+  private apiUrl = 'http://localhost:3000';
 
   constructor(private http: HttpClient) {}
 
   getAuthHeaders() {
-    const token = localStorage.getItem('token'); // 또는 다른 저장소에서 토큰 가져오기
+    const token = localStorage.getItem('token');
     return {
       Authorization: `Bearer ${token}`,
       'Content-Type': 'application/json'
@@ -100,17 +100,6 @@ export class ExhibitionService {
       outputs: this.http.put(`${this.apiUrl}/exhibition-docs/${id}`, outputsData)
     });
   }
-
-  // // Delete: 전시물 삭제
-  // deleteExhibition(id: string): Observable<any> {
-  //   return forkJoin({
-  //     exhibition: this.http.delete(`${this.apiUrl}/exhibitions/${id}`),
-  //     intro: this.http.delete(`${this.apiUrl}/exhibition-intro/${id}`),
-  //     docs: this.http.delete(`${this.apiUrl}/exhibition-docs/${id}`),
-  //     members: this.http.delete(`${this.apiUrl}/exhibition-members/${id}`)
-  //   });
-  // }
-  // Delete: 전시물 삭제 수정
 
   // 전시물 삭제
   deleteExhibition(exhibitionId: number): Observable<any> {

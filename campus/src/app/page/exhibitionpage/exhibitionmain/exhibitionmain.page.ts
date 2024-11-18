@@ -7,6 +7,7 @@ import { ExhibitionService } from "../../../services/exhibition/exhibitionservic
   templateUrl: './exhibitionmain.page.html',
   styleUrls: ['./exhibitionmain.page.scss'],
 })
+
 export class ExhibitionmainPage implements OnInit {
   exhibitions: any[] = [];
   filteredExhibitions: any[] = [];

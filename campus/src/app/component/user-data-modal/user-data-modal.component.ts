@@ -6,7 +6,6 @@ import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
 import { UserService } from 'src/app/services/user/user.service';
 
-
 @Component({
   selector: 'app-user-data-modal',
   templateUrl: './user-data-modal.component.html',
@@ -58,7 +57,7 @@ export class UserDataModalComponent implements OnInit {
         // 성공 시 Alert 띄우기
         await this.showAlert('성공', '회원 정보가 성공적으로 수정되었습니다.');
       } catch (error) {
-        console.error('Error creating course:', error);
+        console.error('Error modifying User:', error);
         // 오류 발생 시 Alert 띄우기
         await this.showAlert('실패', '회원 정보 수정에 실패했습니다.');
       }

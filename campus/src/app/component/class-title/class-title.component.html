@@ -1,0 +1,13 @@
+<section class="BG-color">
+  <div class="box-title" *ngFor="let class of classes; let i = index">
+    <div class="top" style="flex-direction: row; margin: 10px">
+      <ion-icon name="pencil-sharp" (click)="openModal(class)"></ion-icon>
+    </div>
+    <span class="lecture-title">{{class.title}}</span>
+    <div class="instructor-icon">
+      <img src="assets/svg/instructor-icon.svg"/>
+      <span class="lecture-spot">{{class.instructor}}</span>
+    </div>
+    <h6>{{class.description}}</h6>
+  </div>
+</section>

@@ -8,17 +8,16 @@ import { AttendanceModalComponent } from './component/attendance-modal/attendanc
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { SidemenuComponent } from './component/sidemenucomponent/sidemenu.component';
-import {TopBarComponent} from "./component/top-bar/top-bar.component";
-import {HttpClientModule} from "@angular/common/http";
+import { TopBarComponent } from "./component/top-bar/top-bar.component";
+import { HttpClientModule } from "@angular/common/http";
 import { CommonModule } from '@angular/common';
-import{ExhibitionComponent} from "./page/exhibitionpage/exhibition/exhibition.component";
-import { CourseService } from './services/course/course.service'; // 서비스 경로 확인
+import { ExhibitionComponent } from "./page/exhibitionpage/exhibition/exhibition.component";
+import { ClassService } from './services/class/class.service';
 import { JwtModule } from '@auth0/angular-jwt';
-import { UserDataModalComponent } from './component/user-data-modal/user-data-modal.component';
 import { AdminModule } from './page/studyroompage/\badmin/admin.module';
 
 export function tokenGetter() {
-  return localStorage.getItem('token'); // 로컬 스토리에서 토큰 가져오기지
+  return localStorage.getItem('token');
 }
 
 @NgModule({
@@ -36,12 +35,12 @@ export function tokenGetter() {
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
-        allowedDomains: ['localhost:4200'], // API 도메인 설정 (로컬호스트)
-        disallowedRoutes: [], // 제외할 URL 설정
+        allowedDomains: ['localhost:4200'],
+        disallowedRoutes: [],
       },
     }),
   ],
-  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy},CourseService,],
+  providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy},ClassService,],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
