@@ -4,7 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { AdminRoutingModule } from './admin-routing.module';
 import { LessonListAdminPage } from './lesson-list-admin/lesson-list-admin.page';
-import { CourseListAdminPage } from './course-list-admin/course-list-admin.page';
+import { ClassListAdminPage } from './class-list-admin/class-list-admin.page';
 import { SidemenuComponent } from 'src/app/component/sidemenucomponent/sidemenu.component';
 
 @NgModule({
@@ -16,6 +16,6 @@ import { SidemenuComponent } from 'src/app/component/sidemenucomponent/sidemenu.
     SidemenuComponent,
     ReactiveFormsModule
   ],
-  declarations: [LessonListAdminPage, CourseListAdminPage]
+  declarations: [LessonListAdminPage, ClassListAdminPage]
 })
 export class AdminModule {}

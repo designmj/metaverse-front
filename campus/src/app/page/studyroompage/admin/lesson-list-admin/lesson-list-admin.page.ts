@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { CourseService } from '../../../../services/course/course.service';
+import { ClassService } from '../../../../services/class/class.service';
 import { ModalController } from '@ionic/angular';
 import { LessonCreateModalComponent } from 'src/app/component/lesson-create-modal/lesson-create-modal.component';
 
@@ -10,7 +10,7 @@ import { LessonCreateModalComponent } from 'src/app/component/lesson-create-moda
   styleUrls: ['./lesson-list-admin.page.scss'],
 })
 export class LessonListAdminPage implements OnInit {
-  course = {
+  class = {
     id: 1,
     title: '언리얼 엔진을 활용한 VR/AR 개발',
     instructor: '강사 : 김진황',
@@ -65,18 +65,18 @@ export class LessonListAdminPage implements OnInit {
   itemsPerPage: number = 10;
 
   constructor(
-    private courseService: CourseService,
+    private classService: ClassService,
     private modalController: ModalController,
     private route: ActivatedRoute
   ) {}
 
   getPaginatedLessons() {
     const start = (this.currentPage - 1) * this.itemsPerPage;
-    return this.course.lessons.slice(start, start + this.itemsPerPage);
+    return this.class.lessons.slice(start, start + this.itemsPerPage);
   }
 
   nextPage() {
-    if (this.currentPage * this.itemsPerPage < this.course.lessons.length) {
+    if (this.currentPage * this.itemsPerPage < this.class.lessons.length) {
       this.currentPage++;
     }
   }
@@ -89,10 +89,10 @@ export class LessonListAdminPage implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      const courseId = params.get('course_id');
-      console.log(courseId);
-      if (courseId) {
-        // 코스 데이터를 가져오는 로직 추가 가능
+      const classId = params.get('class_id');
+      console.log(classId);
+      if (classId) {
+        // 클래스 데이터를 가져오는 로직 추가 가능
       }
     });
   }
@@ -107,6 +107,6 @@ export class LessonListAdminPage implements OnInit {
 
   deleteLesson(lessonId: number) {
     // 강의 삭제 로직 구현
-    this.course.lessons = this.course.lessons.filter(lesson => lesson.id !== lessonId); // 삭제 후 목록 업데이트
+    this.class.lessons = this.class.lessons.filter(lesson => lesson.id !== lessonId); // 삭제 후 목록 업데이트
   }
 }

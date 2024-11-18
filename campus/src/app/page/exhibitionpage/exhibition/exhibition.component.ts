@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { ExhibitionService } from '../../../services/exhibition/exhibitionservice.service';
-import {FormsModule} from "@angular/forms";
+import { FormsModule } from "@angular/forms";
 
 @Component({
   selector: 'app-exhibition-create',
@@ -14,7 +14,7 @@ import {FormsModule} from "@angular/forms";
 export class ExhibitionComponent {
   projectName: string = '';
   teamName: string = '';
-  course: string = '';
+  class: string = '';
   thumbnail: File | null = null;
   introduce: string = '';
   memberName: string = '';
@@ -28,7 +28,7 @@ export class ExhibitionComponent {
     const formData = {
       projectName: this.projectName,
       teamName: this.teamName,
-      course: this.course,
+      class: this.class,
       thumbnail: this.thumbnail,
       introduce: this.introduce.split('\n'),
       members: [{ name: this.memberName, image: this.memberImage }],

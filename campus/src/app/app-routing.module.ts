@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { SidemenuComponent } from './component/sidemenucomponent/sidemenu.component';
-import {TopBarComponent} from "./component/top-bar/top-bar.component";
+import { TopBarComponent } from "./component/top-bar/top-bar.component";
 
 const routes: Routes = [
   {
@@ -15,7 +15,6 @@ const routes: Routes = [
   {
     path: 'sidemenu', component: SidemenuComponent
   },
-
   {
     path: 'main',
     loadChildren: () => import('./page/mainpage/firstpage/firstpage.module').then(m => m.FirstpagePageModule)
@@ -49,12 +48,12 @@ const routes: Routes = [
     loadChildren: () => import('./page/exhibitionpage/exhibitioncreate/exhibitioncreate.module').then(m => m.ExhibitioncreatePageModule)
   },
   {
-    path: 'coursejoin',
-    loadChildren: () => import('./page/studyroompage/course-join/course-join.module').then(m => m.CourseJoinPageModule)
+    path: 'classjoin',
+    loadChildren: () => import('./page/studyroompage/class-join/class-join.module').then(m => m.ClassJoinPageModule)
   },
   {
-    path: 'coursemy',
-    loadChildren: () => import('./page/studyroompage/course-my/course-my.module').then(m => m.CourseMyPageModule)
+    path: 'classmy',
+    loadChildren: () => import('./page/studyroompage/class-my/class-my.module').then(m => m.ClassMyPageModule)
   },  {
     path: 'admin',
     loadChildren: () => import('./page/studyroompage/admin/admin-routing.module').then(m => m.AdminRoutingModule)

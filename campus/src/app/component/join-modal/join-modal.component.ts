@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Router} from "@angular/router";
-import {ModalController} from "@ionic/angular";
+import { Router } from "@angular/router";
+import { ModalController } from "@ionic/angular";
 import { IonicModule } from '@ionic/angular';
-
 
 @Component({
   selector: 'app-join-modal',

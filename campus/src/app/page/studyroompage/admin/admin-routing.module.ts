@@ -1,8 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { LessonListAdminPage } from './lesson-list-admin/lesson-list-admin.page';
-import { CourseListAdminPage } from './course-list-admin/course-list-admin.page';
-
+import { ClassListAdminPage } from './class-list-admin/class-list-admin.page';
 
 const routes: Routes = [
   {
@@ -12,7 +11,7 @@ const routes: Routes = [
     path: 'lessonlist', component: LessonListAdminPage
   }, 
   {
-    path: 'courselist', component: CourseListAdminPage
+    path: 'classlist', component: ClassListAdminPage
   },
 ];
 

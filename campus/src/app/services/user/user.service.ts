@@ -1,13 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http'; // HttpHeaders 추가
-import { Observable } from 'rxjs';
-import { CourseResponseDto } from '../../models/course/courses/course-response.interface'; // 인터페이스 경로 수정
+import { HttpClient } from '@angular/common/http';
 import { ApiResponse } from 'src/app/models/common/api-response.interface';
-import { CreateCourseRegistrationDto } from '../../models/course/courses/course-registration.interface';
-import { DocNameResponseData } from 'src/app/models/course/doc_name/doc_name-response.interface';
-import { CourseDocResponseData } from 'src/app/models/course/course_doc/course_doc-response.interface';
-import { VideoTopicResponseData } from 'src/app/models/course/video_topic/video_topic-response.interface';
-import { VideoResponseData } from 'src/app/models/course/video/video-response.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -29,7 +22,7 @@ export class UserService {
   //   };
   // }
 
-  // createCourse(courseData: any): Observable<ApiResponse<CourseResponseDto>> {
+  // createClass(classData: any): Observable<ApiResponse<ClassResponseDto>> {
   //   const token = localStorage.getItem('token');
 
   //   // 토큰이 제대로 불러와지는지 확인하는 로그
@@ -44,154 +37,154 @@ export class UserService {
   //     Authorization: `Bearer ${token}`, // 인증 헤더 추가
   //   });
 
-  //   return this.http.post<ApiResponse<CourseResponseDto>>(`${this.courseApiUrl}/register`, courseData, { headers });
+  //   return this.http.post<ApiResponse<ClassResponseDto>>(`${this.classApiUrl}/register`, classData, { headers });
   // }
 
 
-  // /*course CRUD*/
+  // /*class CRUD*/
 
   // // 모든 강의 정보를 불러오는 메서드
-  // getAllCourses(): Observable<ApiResponse<CourseResponseDto[]>> {
+  // getAllClasses(): Observable<ApiResponse<ClassResponseDto[]>> {
   //   const headers = this.getAuthHeaders();
-  //   return this.http.get<ApiResponse<CourseResponseDto[]>>(this.courseApiUrl, { headers });
+  //   return this.http.get<ApiResponse<ClassResponseDto[]>>(this.classApiUrl, { headers });
   // }
 
   // // 특정 강의 정보를 불러오는 메서드
-  // getOneCourses(courseId: number): Observable<ApiResponse<CourseResponseDto[]>> {
+  // getOneClasses(classId: number): Observable<ApiResponse<ClassResponseDto[]>> {
   //   const headers = this.getAuthHeaders();
-  //   return this.http.get<ApiResponse<CourseResponseDto[]>>(`${this.courseApiUrl}/${courseId}/read`, { headers });
+  //   return this.http.get<ApiResponse<ClassResponseDto[]>>(`${this.classApiUrl}/${classId}/read`, { headers });
   // }
 
   // // 강의 정보 수정
-  // updateCourse(courseId: number, courseData: any): Observable<ApiResponse<CourseResponseDto>> {
+  // updateClass(classId: number, classData: any): Observable<ApiResponse<ClassResponseDto>> {
   //   const headers = this.getAuthHeaders(); // 인증 헤더 가져오기
-  //   return this.http.patch<ApiResponse<CourseResponseDto>>(`${this.courseApiUrl}/course/${courseId}/update`, courseData, { headers }); // PUT 요청
+  //   return this.http.patch<ApiResponse<ClassResponseDto>>(`${this.classApiUrl}/class/${classId}/update`, classData, { headers }); // PUT 요청
 
   // }
 
   // // 강의 삭제 메서드 추가
-  // deleteCourse(courseId: number): Observable<ApiResponse<void>> {
+  // deleteClass(classId: number): Observable<ApiResponse<void>> {
   //   const headers = this.getAuthHeaders(); // 인증 헤더 가져오기
-  //   return this.http.delete<ApiResponse<void>>(`${this.courseApiUrl}/course/${courseId}/delete`, { headers }); // DELETE 요청
+  //   return this.http.delete<ApiResponse<void>>(`${this.classApiUrl}/class/${classId}/delete`, { headers }); // DELETE 요청
   // }
 
   // //수강 신청 받음
-  // joinCourse(courseId: number, registrationData: CreateCourseRegistrationDto): Observable<ApiResponse<CreateCourseRegistrationDto>> {
+  // joinClass(classId: number, registrationData: CreateClassRegistrationDto): Observable<ApiResponse<CreateClassRegistrationDto>> {
   //   const headers = this.getAuthHeaders(); // 인증 헤더 가져오기
-  //   const url = `${this.courseApiUrl}/${courseId}/courseRegistration/register`; // 올바른 URL 구성
-  //   return this.http.post<ApiResponse<CreateCourseRegistrationDto>>(url, registrationData, { headers }); // POST 요청으로 변경
+  //   const url = `${this.classApiUrl}/${classId}/classRegistration/register`; // 올바른 URL 구성
+  //   return this.http.post<ApiResponse<CreateClassRegistrationDto>>(url, registrationData, { headers }); // POST 요청으로 변경
   // }
 
-  // getAllJoinUsers(): Observable<ApiResponse<CreateCourseRegistrationDto[]>> {
+  // getAllJoinUsers(): Observable<ApiResponse<CreateClassRegistrationDto[]>> {
   //   const headers = this.getAuthHeaders();
-  //   return this.http.get<ApiResponse<CreateCourseRegistrationDto[]>>(this.courseApiUrl, { headers });
+  //   return this.http.get<ApiResponse<CreateClassRegistrationDto[]>>(this.classApiUrl, { headers });
   // }
 
   // // 강의 삭제 메서드 추가
-  // canceljoinCourse(courseId: number,course_registration_id:number): Observable<ApiResponse<void>> {
+  // canceljoinClass(classId: number,class_registration_id:number): Observable<ApiResponse<void>> {
   //   const headers = this.getAuthHeaders(); // 인증 헤더 가져오기
-  //   return this.http.delete<ApiResponse<void>>(`${this.courseApiUrl}/${courseId}/courseRegistration/${course_registration_id}/delete`, { headers }); // DELETE 요청
+  //   return this.http.delete<ApiResponse<void>>(`${this.classApiUrl}/${classId}/classRegistration/${class_registration_id}/delete`, { headers }); // DELETE 요청
   // }
 
   // // 학습 자료 주제 생성(POST)
-  // createDocName(courseId: number, docNameData: any): Observable<ApiResponse<DocNameResponseData>> {
+  // createDocName(classId: number, docNameData: any): Observable<ApiResponse<DocNameResponseData>> {
   //   const headers = this.getAuthHeaders();
-  //   return this.http.post<ApiResponse<DocNameResponseData>>(`${this.courseApiUrl}/${courseId}/docNames/registerDN`, docNameData, { headers })
+  //   return this.http.post<ApiResponse<DocNameResponseData>>(`${this.classApiUrl}/${classId}/docNames/registerDN`, docNameData, { headers })
   // }
 
   // // 학습 자료 주제 조회(GET | pa_topic_id이 null인 topic 조회)
-  // getFirstDocName(courseId: number): Observable<ApiResponse<DocNameResponseData[]>> {
+  // getFirstDocName(classId: number): Observable<ApiResponse<DocNameResponseData[]>> {
   //   const headers = this.getAuthHeaders();
-  //   return this.http.get<ApiResponse<DocNameResponseData[]>>(`${this.courseApiUrl}/${courseId}/docNames/root`, { headers })
+  //   return this.http.get<ApiResponse<DocNameResponseData[]>>(`${this.classApiUrl}/${classId}/docNames/root`, { headers })
   // }
 
   // //학습 주제 전체 조회
-  // getAllDocName(courseId: number): Observable<ApiResponse<DocNameResponseData[]>> {
+  // getAllDocName(classId: number): Observable<ApiResponse<DocNameResponseData[]>> {
   //   const headers = this.getAuthHeaders();
-  //   return this.http.get<ApiResponse<DocNameResponseData[]>>(`${this.courseApiUrl}/${courseId}/docNames/allDN`, { headers })
+  //   return this.http.get<ApiResponse<DocNameResponseData[]>>(`${this.classApiUrl}/${classId}/docNames/allDN`, { headers })
   // }
 
   // // 학습 자료 주제 조회(GET | 특정 pa_topic_id를 갖는 topic 조회) => topic_id로 특정 pa_topic_id를 갖는 topic들 반환, 즉 파라미터로 받는 topic_id를 pa_topic_id로 하는 모든 topic 조회
-  // getDocName(courseId: number, topicId: number): Observable<ApiResponse<DocNameResponseData>> {
+  // getDocName(classId: number, topicId: number): Observable<ApiResponse<DocNameResponseData>> {
   //   const headers = this.getAuthHeaders();
-  //   return this.http.get<ApiResponse<DocNameResponseData>>(`${this.courseApiUrl}/${courseId}/docNames/${topicId}/read`, { headers })
+  //   return this.http.get<ApiResponse<DocNameResponseData>>(`${this.classApiUrl}/${classId}/docNames/${topicId}/read`, { headers })
   // }
 
   // // 학습 자료 주제명 수정(PATCH)
-  // updateDocName(courseId: number, topicId: number, docNameData: any): Observable<ApiResponse<DocNameResponseData>> {
+  // updateDocName(classId: number, topicId: number, docNameData: any): Observable<ApiResponse<DocNameResponseData>> {
   //   const headers = this.getAuthHeaders();
-  //   return this.http.patch<ApiResponse<DocNameResponseData>>(`${this.courseApiUrl}/${courseId}/docNames/${topicId}/update`, docNameData, { headers })
+  //   return this.http.patch<ApiResponse<DocNameResponseData>>(`${this.classApiUrl}/${classId}/docNames/${topicId}/update`, docNameData, { headers })
   // }
 
   // // 학습 자료 주제 삭제(DELETE)
-  // deleteDocName(courseId: number, topicId: number): Observable<ApiResponse<DocNameResponseData>> {
+  // deleteDocName(classId: number, topicId: number): Observable<ApiResponse<DocNameResponseData>> {
   //   const headers = this.getAuthHeaders();
-  //   return this.http.delete<ApiResponse<DocNameResponseData>>(`${this.courseApiUrl}/${courseId}/docNames/${topicId}/delete`, { headers })
+  //   return this.http.delete<ApiResponse<DocNameResponseData>>(`${this.classApiUrl}/${classId}/docNames/${topicId}/delete`, { headers })
   // }
 
   // // 학습 자료 생성(POST | 파일 업로드)
-  // createCourseDoc(courseId: number, topicId: number, CourseDocData: any): Observable<ApiResponse<CourseDocResponseData>> {
+  // createClassDoc(classId: number, topicId: number, ClassDocData: any): Observable<ApiResponse<ClassDocResponseData>> {
   //   const headers = this.getAuthHeaders();
-  //   return this.http.post<ApiResponse<CourseDocResponseData>>(`${this.courseApiUrl}/${courseId}/docNames/${topicId}/courseDocs/register`, CourseDocData, { headers })
+  //   return this.http.post<ApiResponse<ClassDocResponseData>>(`${this.classApiUrl}/${classId}/docNames/${topicId}/classDocs/register`, ClassDocData, { headers })
   // }
 
-  // // 학습 자료 조회(GET | 특정 topic_id에 속한 course_doc 전체 조회)
-  // getAllCourseDoc(courseId: number, topicId: number): Observable<ApiResponse<CourseDocResponseData>> {
+  // // 학습 자료 조회(GET | 특정 topic_id에 속한 class_doc 전체 조회)
+  // getAllClassDoc(classId: number, topicId: number): Observable<ApiResponse<ClassDocResponseData>> {
   //   const headers = this.getAuthHeaders();
-  //   return this.http.get<ApiResponse<CourseDocResponseData>>(`${this.courseApiUrl}/${courseId}/docNames/${topicId}/courseDocs`, { headers })
+  //   return this.http.get<ApiResponse<ClassDocResponseData>>(`${this.classApiUrl}/${classId}/docNames/${topicId}/classDocs`, { headers })
   // }
 
   // // 학습 자료 다운로드(GET)
-  // downloadCourseDoc(courseId: number, topicId: number, fileUrl: string): Observable<ApiResponse<CourseDocResponseData>> {
+  // downloadClassDoc(classId: number, topicId: number, fileUrl: string): Observable<ApiResponse<ClassDocResponseData>> {
   //   const headers = this.getAuthHeaders();
-  //   return this.http.get<ApiResponse<CourseDocResponseData>>(`${this.courseApiUrl}/${courseId}/docNames/${topicId}/courseDocs/download/${fileUrl}`, { headers })
+  //   return this.http.get<ApiResponse<ClassDocResponseData>>(`${this.classApiUrl}/${classId}/docNames/${topicId}/classDocs/download/${fileUrl}`, { headers })
   // }
 
   // // 학습 자료 삭제(DELETE)
-  // deleteCourseDoc(courseId: number, topicId: number, courseDocId: number): Observable<ApiResponse<CourseDocResponseData>> {
+  // deleteClassDoc(classId: number, topicId: number, classDocId: number): Observable<ApiResponse<ClassDocResponseData>> {
   //   const headers = this.getAuthHeaders();
-  //   return this.http.delete<ApiResponse<CourseDocResponseData>>(`${this.courseApiUrl}/${courseId}/docNames/${topicId}/courseDocs/download/${courseDocId}`, { headers })
+  //   return this.http.delete<ApiResponse<ClassDocResponseData>>(`${this.classApiUrl}/${classId}/docNames/${topicId}/classDocs/download/${classDocId}`, { headers })
   // }
 
   // // 강의 영상 생성(POST)
   // createLesson(VideoTopicData: any): Observable<ApiResponse<VideoTopicResponseData>> {
   //   const headers = this.getAuthHeaders();
-  //   return this.http.post<ApiResponse<VideoTopicResponseData>>(`${this.courseApiUrl}/${VideoTopicData.course_id}/videoTopics/registerVT`, VideoTopicData, { headers })
+  //   return this.http.post<ApiResponse<VideoTopicResponseData>>(`${this.classApiUrl}/${VideoTopicData.class_id}/videoTopics/registerVT`, VideoTopicData, { headers })
   // }
 
   // // 강의 영상 조회(GET | 전체 조회)
-  // getAllLessons(courseId: number | null): Observable<ApiResponse<VideoTopicResponseData[]>> {
+  // getAllLessons(classId: number | null): Observable<ApiResponse<VideoTopicResponseData[]>> {
   //   const headers = this.getAuthHeaders();
-  //   return this.http.get<ApiResponse<VideoTopicResponseData[]>>(`${this.courseApiUrl}/${courseId}/videoTopics/allVT2`, { headers });
+  //   return this.http.get<ApiResponse<VideoTopicResponseData[]>>(`${this.classApiUrl}/${classId}/videoTopics/allVT2`, { headers });
   // }
 
   // // 영상 주제 수정(PATCH)
-  // updateVideoTopic(courseId: number, videoTopicId: number, VideoTopicData: any): Observable<ApiResponse<VideoTopicResponseData>> {
+  // updateVideoTopic(classId: number, videoTopicId: number, VideoTopicData: any): Observable<ApiResponse<VideoTopicResponseData>> {
   //   const headers = this.getAuthHeaders();
-  //   return this.http.patch<ApiResponse<VideoTopicResponseData>>(`${this.courseApiUrl}/${courseId}/videoTopics/${videoTopicId}/update`, VideoTopicData, { headers })
+  //   return this.http.patch<ApiResponse<VideoTopicResponseData>>(`${this.classApiUrl}/${classId}/videoTopics/${videoTopicId}/update`, VideoTopicData, { headers })
   // }
 
   // // 강의 영상 삭제(DELETE)
-  // deleteLesson(courseId: number, videoTopicId: number): Observable<ApiResponse<void>> {
+  // deleteLesson(classId: number, videoTopicId: number): Observable<ApiResponse<void>> {
   //   const headers = this.getAuthHeaders();
-  //   return this.http.delete<ApiResponse<void>>(`${this.courseApiUrl}/${courseId}/videoTopics/${videoTopicId}/delete`, { headers });
+  //   return this.http.delete<ApiResponse<void>>(`${this.classApiUrl}/${classId}/videoTopics/${videoTopicId}/delete`, { headers });
   // }
 
   // // 강의 영상 생성(업로드, POST)
-  // createVideo(courseId: number, videoTopicId: number, VideoData: any): Observable<ApiResponse<VideoResponseData>> {
+  // createVideo(classId: number, videoTopicId: number, VideoData: any): Observable<ApiResponse<VideoResponseData>> {
   //   const headers = this.getAuthHeaders();
-  //   return this.http.post<ApiResponse<VideoResponseData>>(`${this.courseApiUrl}/${courseId}/videoTopics/${videoTopicId}/video/upload`, VideoData, { headers })
+  //   return this.http.post<ApiResponse<VideoResponseData>>(`${this.classApiUrl}/${classId}/videoTopics/${videoTopicId}/video/upload`, VideoData, { headers })
   // }
 
   // // 영상 조회(스트리밍, GET) => 추가적으로 로직 작성 필요
-  // streamVideo(courseId: number, videoTopicId: number, videoId: number): Observable<ApiResponse<VideoResponseData>> {
+  // streamVideo(classId: number, videoTopicId: number, videoId: number): Observable<ApiResponse<VideoResponseData>> {
   //   const headers = this.getAuthHeaders();
-  //   return this.http.get<ApiResponse<VideoResponseData>>(`${this.courseApiUrl}/${courseId}/videoTopics/${videoTopicId}/video/${videoId}/stream`, { headers })
+  //   return this.http.get<ApiResponse<VideoResponseData>>(`${this.classApiUrl}/${classId}/videoTopics/${videoTopicId}/video/${videoId}/stream`, { headers })
   // }
 
   // // 영상 삭제(DELETE)
-  // deleteVideo(courseId: number, videoTopicId: number, videoId: number): Observable<ApiResponse<VideoResponseData>> {
+  // deleteVideo(classId: number, videoTopicId: number, videoId: number): Observable<ApiResponse<VideoResponseData>> {
   //   const headers = this.getAuthHeaders();
-  //   return this.http.delete<ApiResponse<VideoResponseData>>(`${this.courseApiUrl}/${courseId}/videoTopics/${videoTopicId}/video/${videoId}/delete`, { headers })
+  //   return this.http.delete<ApiResponse<VideoResponseData>>(`${this.classApiUrl}/${classId}/videoTopics/${videoTopicId}/video/${videoId}/delete`, { headers })
   // }
 }

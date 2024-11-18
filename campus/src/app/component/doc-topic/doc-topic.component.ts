@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { CourseService } from '../../services/course/course.service';
+import { ClassService } from '../../services/class/class.service';
 import { firstValueFrom } from 'rxjs';
-import { DocNameResponseData } from '../../models/course/doc_name/doc_name-response.interface';
+import { DocNameResponseData } from '../../models/class/doc_name/doc_name-response.interface';
 import { ApiResponse } from '../../models/common/api-response.interface';
 
 @Component({
@@ -15,10 +15,10 @@ export class DocTopicComponent implements OnInit {
   currentFolder: DocNameResponseData | null = null;
   showNewTopicForm: boolean = false;
   newTopicTitle: string = '';
-  course_id = 14;
+  class_id = 14;
   isInputValid: boolean = false;
 
-  constructor(private courseService: CourseService) {}
+  constructor(private classService: ClassService) {}
 
   ngOnInit() {
     this.loadTopLevelFolders();
@@ -27,7 +27,7 @@ export class DocTopicComponent implements OnInit {
   async loadTopLevelFolders() {
     try {
       const response: ApiResponse<DocNameResponseData[]> = await firstValueFrom(
-        this.courseService.getAllDocName(this.course_id)
+        this.classService.getAllDocName(this.class_id)
       );
       this.topLevelFolders = response.data.filter(folder => !folder.pa_topic_id);
     } catch (error) {
@@ -38,7 +38,7 @@ export class DocTopicComponent implements OnInit {
   async loadSubFolders(parentId: number) {
     try {
       const response: ApiResponse<DocNameResponseData[]> = await firstValueFrom(
-        this.courseService.getAllDocName(this.course_id)
+        this.classService.getAllDocName(this.class_id)
       );
       this.subFolders = response.data.filter(folder => folder.pa_topic_id === parentId);
     } catch (error) {
@@ -77,7 +77,7 @@ export class DocTopicComponent implements OnInit {
 
     try {
       const response: ApiResponse<DocNameResponseData> = await firstValueFrom(
-        this.courseService.createDocName(this.course_id, docTopicData)
+        this.classService.createDocName(this.class_id, docTopicData)
       );
       console.log('폴더가 성공적으로 생성되었습니다:', response);
 
@@ -99,7 +99,7 @@ export class DocTopicComponent implements OnInit {
     if (!confirmed) return;
 
     try {
-      await firstValueFrom(this.courseService.deleteDocName(this.course_id, topicId));
+      await firstValueFrom(this.classService.deleteDocName(this.class_id, topicId));
       if (this.currentFolder) {
         this.subFolders = this.subFolders.filter(folder => folder.topic_id !== topicId);
       } else {
