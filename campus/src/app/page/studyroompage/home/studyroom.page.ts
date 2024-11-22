@@ -1,13 +1,13 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { AttendanceModalComponent } from '../../../component/attendance-modal/attendance-modal.component';
+import { AttendanceModalComponent } from 'src/app/component/attendance-modal/attendance-modal.component';
 
 @Component({
   selector: 'app-studyroom',
   templateUrl: './studyroom.page.html',
   styleUrls: ['./studyroom.page.scss'],
 })
-export class StudyroomPage implements OnInit, OnDestroy {
+export class StudyroomHomePage implements OnInit, OnDestroy {
   currentDate: string | undefined;
   currentDate2: string | undefined;
   private intervalId: any;
@@ -43,6 +43,4 @@ export class StudyroomPage implements OnInit, OnDestroy {
     this.currentDate = `${now.getFullYear()}년 ${now.getMonth() + 1}월 ${now.getDate()}일 ${now.getHours()}시 ${now.getMinutes()}분`;
     this.currentDate2 = `${now.getFullYear()}년 ${now.getMonth() + 1}월 ${now.getDate()}일`;
   }
-
-
 }

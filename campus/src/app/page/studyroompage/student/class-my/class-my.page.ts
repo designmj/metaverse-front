@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { ClassService } from '../../../services/class/class.service';
+import { ClassService } from '../../../../services/class/class.service';
 
 @Component({
   selector: 'app-classmy',

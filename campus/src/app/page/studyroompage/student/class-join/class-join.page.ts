@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { ClassCreateModalComponent } from '../../../component/class-create-modal/class-create-modal.component';
-import { ClassService } from '../../../services/class/class.service';
+import { ClassCreateModalComponent } from '../../../../component/class-create-modal/class-create-modal.component';
+import { ClassService } from '../../../../services/class/class.service';
 import { firstValueFrom } from 'rxjs';
-import { ClassResponseDto } from '../../../models/class/classes/class-response.interface';
+import { ClassResponseDto } from '../../../../models/class/classes/class-response.interface';
 import { ApiResponse } from 'src/app/models/common/api-response.interface';
-import { CreateClassRegistrationDto } from '../../../models/class/classes/class-registration.interface';
+import { CreateClassRegistrationDto } from '../../../../models/class/classes/class-registration.interface';
 import { ClassRegistrationStatus } from 'src/app/models/enums/class-registration-status.enum';
 
 @Component({

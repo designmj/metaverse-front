@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 import { SidemenuComponent } from './component/sidemenucomponent/sidemenu.component';
 import { TopBarComponent } from "./component/top-bar/top-bar.component";
+import { StudyroomHomePage } from './page/studyroompage/home/studyroom.page';
 
 const routes: Routes = [
   {
@@ -41,30 +42,11 @@ const routes: Routes = [
 // 사이드 메뉴 경로
   {
     path: 'studyroom',
-    loadChildren: () => import('./page/studyroompage/studyroom/studyroom.module').then(m => m.StudyroomPageModule)
+    loadChildren: () => import('./page/studyroompage/studyroom-routing.module').then(m => m.StudyroomHomeRoutingModule)
   },
   {
     path: 'exhibitioncreate',
     loadChildren: () => import('./page/exhibitionpage/exhibitioncreate/exhibitioncreate.module').then(m => m.ExhibitioncreatePageModule)
-  },
-  {
-    path: 'classjoin',
-    loadChildren: () => import('./page/studyroompage/class-join/class-join.module').then(m => m.ClassJoinPageModule)
-  },
-  {
-    path: 'classmy',
-    loadChildren: () => import('./page/studyroompage/class-my/class-my.module').then(m => m.ClassMyPageModule)
-  },  {
-    path: 'admin',
-    loadChildren: () => import('./page/studyroompage/admin/admin-routing.module').then(m => m.AdminRoutingModule)
-  },
-  {
-    path: 'projectsearch',
-    loadChildren: () => import('./page/studyroompage/projectsearch/projectsearch.module').then(m => m.ProjectsearchPageModule)
-  },
-  {
-    path: 'projectmy',
-    loadChildren: () => import('./page/studyroompage/projectmy/projectmy.module').then(m => m.ProjectmyPageModule)
   },
   {
     path: 'introduce-metaverse',

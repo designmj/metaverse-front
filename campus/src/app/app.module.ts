@@ -15,6 +15,8 @@ import { ExhibitionComponent } from "./page/exhibitionpage/exhibition/exhibition
 import { ClassService } from './services/class/class.service';
 import { JwtModule } from '@auth0/angular-jwt';
 import { AdminModule } from './page/studyroompage/admin/admin.module';
+import { StudentModule } from './page/studyroompage/student/student.module';
+import { StudyroomModule } from './page/studyroompage/studyroom.module';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -31,7 +33,7 @@ export function tokenGetter() {
     CommonModule,
     ExhibitionComponent,
     FormsModule, SidemenuComponent,
-    AdminModule,
+    StudyroomModule,
     JwtModule.forRoot({
       config: {
         tokenGetter: tokenGetter,
