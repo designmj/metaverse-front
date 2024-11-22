@@ -56,7 +56,7 @@ const routes: Routes = [
     loadChildren: () => import('./page/studyroompage/class-my/class-my.module').then(m => m.ClassMyPageModule)
   },  {
     path: 'admin',
-    loadChildren: () => import('./page/studyroompage/admin/admin-routing.module').then(m => m.AdminRoutingModule)
+    loadChildren: () => import('./page/studyroompage/admin/admin-routing.module').then(m => m.AdminRoutingModule)
   },
   {
     path: 'projectsearch',

@@ -14,7 +14,7 @@ import { CommonModule } from '@angular/common';
 import { ExhibitionComponent } from "./page/exhibitionpage/exhibition/exhibition.component";
 import { ClassService } from './services/class/class.service';
 import { JwtModule } from '@auth0/angular-jwt';
-import { AdminModule } from './page/studyroompage/\badmin/admin.module';
+import { AdminModule } from './page/studyroompage/admin/admin.module';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
