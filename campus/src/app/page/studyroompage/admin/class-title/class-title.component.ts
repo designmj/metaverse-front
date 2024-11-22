@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { firstValueFrom } from 'rxjs';
-import { ClassService } from '../../services/class/class.service';
-import { ClassResponseDto } from '../../models/class/classes/class-response.interface';
-import { ApiResponse} from "../../models/common/api-response.interface";
 import { ModalController } from '@ionic/angular';
-import { UpdateClassModalComponent } from "../update-class-modal/update-class-modal.component";
+import { ClassService } from 'src/app/services/class/class.service';
+import { ClassResponseDto } from 'src/app/models/class/classes/class-response.interface';
+import { ApiResponse } from 'src/app/models/common/api-response.interface';
+import { UpdateClassModalComponent } from '../class-update-modal/class-update-modal.component';
 
 @Component({
   selector: 'app-class-title',

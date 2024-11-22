@@ -1,10 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicModule, ModalController } from '@ionic/angular';
-import { RouterLink, RouterLinkActive } from "@angular/router";
-import { NgForOf } from "@angular/common";
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
-import { ClassCreateModalComponent } from '../class-create-modal/class-create-modal.component';
+import { ClassCreateModalComponent } from 'src/app/page/studyroompage/admin/class-create-modal/class-create-modal.component';
 
 @Component({
   selector: 'app-sidemenu',
@@ -12,9 +10,6 @@ import { ClassCreateModalComponent } from '../class-create-modal/class-create-mo
   styleUrls: ['./sidemenu.component.scss'],
   imports: [
     IonicModule,
-    RouterLink,
-    NgForOf,
-    RouterLinkActive,
     CommonModule,
   ],
   standalone: true

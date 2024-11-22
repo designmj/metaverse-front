@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
-import { SidemenuComponent } from './component/sidemenucomponent/sidemenu.component';
-import { TopBarComponent } from "./component/top-bar/top-bar.component";
+import { SidemenuComponent } from './layout/sidemenucomponent/sidemenu.component';
+import { TopBarComponent } from "./layout/top-bar/top-bar.component";
 import { StudyroomHomePage } from './page/studyroompage/home/studyroom.page';
 
 const routes: Routes = [

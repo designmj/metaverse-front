@@ -4,8 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { ExhibitioncreatePageRoutingModule } from './exhibitioncreate-routing.module';
 import { ExhibitioncreatePage } from './exhibitioncreate.page';
-import { TopBarComponent } from "../../../component/top-bar/top-bar.component";
-import { CardComponent } from "../../../component/cardcomponent/cardcomponent.component";
+import { TopBarComponent } from "../../../layout/top-bar/top-bar.component";
+import { CardComponent } from "../exhibition-cardcomponent/cardcomponent.component";
 import { ExhibitionComponent } from "../exhibition/exhibition.component";
 
 

@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { ClassService } from '../../services/class/class.service';
 import { AlertController } from '@ionic/angular';
 import { firstValueFrom } from 'rxjs';
 import { IonicModule } from '@ionic/angular';
 import { CommonModule } from '@angular/common';
+import { ClassService } from 'src/app/services/class/class.service';
 
 @Component({
   selector: 'app-lesson-create-modal',

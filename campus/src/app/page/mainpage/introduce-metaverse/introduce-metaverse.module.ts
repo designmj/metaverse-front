@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 import { IntroduceMetaversePageRoutingModule } from './introduce-metaverse-routing.module';
 import { IntroduceMetaversePage } from './introduce-metaverse.page';
-import { TopBarComponent } from "../../../component/top-bar/top-bar.component";
+import { TopBarComponent } from "../../../layout/top-bar/top-bar.component";
 
 @NgModule({
     imports: [

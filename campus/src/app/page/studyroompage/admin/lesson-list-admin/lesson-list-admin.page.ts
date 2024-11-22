@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ClassService } from '../../../../services/class/class.service';
 import { ModalController } from '@ionic/angular';
-import { LessonCreateModalComponent } from 'src/app/component/lesson-create-modal/lesson-create-modal.component';
+import { LessonCreateModalComponent } from '../lesson-create-modal/lesson-create-modal.component';
 
 @Component({
   selector: 'app-classmy',

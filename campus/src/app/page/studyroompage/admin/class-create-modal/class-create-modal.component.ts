@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { ClassService } from '../../services/class/class.service';
+import { ClassService } from '../../../../services/class/class.service';
 import { AlertController } from '@ionic/angular';
 import { firstValueFrom } from 'rxjs';
 import { IonicModule } from '@ionic/angular';

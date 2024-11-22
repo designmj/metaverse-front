@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { ClassService } from '../../services/class/class.service';
+import { ClassService } from '../../../../services/class/class.service';
 import { firstValueFrom } from 'rxjs';
-import { DocNameResponseData } from '../../models/class/doc_name/doc_name-response.interface';
-import { ApiResponse } from '../../models/common/api-response.interface';
+import { DocNameResponseData } from '../../../../models/class/doc_name/doc_name-response.interface';
+import { ApiResponse } from '../../../../models/common/api-response.interface';
 
 @Component({
   selector: 'app-doc-topic',

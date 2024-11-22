@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { ModalController } from '@ionic/angular';
-import { AttendanceModalComponent } from 'src/app/component/attendance-modal/attendance-modal.component';
+import { AttendanceModalComponent } from 'src/app/page/studyroompage/student/attendance-modal/attendance-modal.component';
 
 @Component({
   selector: 'app-studyroom',

@@ -1,15 +1,15 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
-import { ClassService } from '../../services/class/class.service';
+import { ClassService } from '../../../../services/class/class.service';
 import { AlertController } from '@ionic/angular';
 import { firstValueFrom } from 'rxjs';
 import { IonicModule } from '@ionic/angular';
-import { ClassResponseDto } from '../../models/class/classes/class-response.interface';
+import { ClassResponseDto } from '../../../../models/class/classes/class-response.interface';
 
 @Component({
   selector: 'app-update-class-modal',
-  templateUrl: './update-class-modal.component.html',
-  styleUrls: ['./update-class-modal.component.scss'],
+  templateUrl: './class-update-modal.component.html',
+  styleUrls: ['./class-update-modal.component.scss'],
   standalone: true,
   imports: [
     IonicModule,          // IonicModule 추가

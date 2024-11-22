@@ -6,8 +6,8 @@ import { IonicModule } from '@ionic/angular';
 import { ExhibitionmainPageRoutingModule } from './exhibitionmain-routing.module';
 // @ts-ignore
 import { ExhibitionmainPage } from './exhibitionmain.page';
-import {TopBarComponent} from "../../../component/top-bar/top-bar.component";
-import {CardComponent} from "../../../component/cardcomponent/cardcomponent.component";
+import {TopBarComponent} from "../../../layout/top-bar/top-bar.component";
+import {CardComponent} from "../exhibition-cardcomponent/cardcomponent.component";
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({

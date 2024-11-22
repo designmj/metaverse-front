@@ -2,13 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ClassService } from '../../../../services/class/class.service';
 import { IonicModule, ModalController } from '@ionic/angular';
-import { ClassCreateModalComponent } from 'src/app/component/class-create-modal/class-create-modal.component';
 import { firstValueFrom } from 'rxjs';
 import { ApiResponse } from 'src/app/models/common/api-response.interface';
 import { CreateClassRegistrationDto } from 'src/app/models/class/classes/class-registration.interface';
 import { ClassResponseDto } from 'src/app/models/class/classes/class-response.interface';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
+import { ClassCreateModalComponent } from '../class-create-modal/class-create-modal.component';
 @Component({
   selector: 'app-classmy',
   templateUrl: './class-list-admin.page.html',

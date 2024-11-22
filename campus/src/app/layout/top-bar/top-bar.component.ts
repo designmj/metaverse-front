@@ -4,9 +4,9 @@ import { RouterLink, RouterLinkActive } from "@angular/router";
 import { CommonModule } from '@angular/common';
 import { AlertController, ModalController } from '@ionic/angular';
 import { AuthService } from '../../services/auth/auth.service';
-import { JoinModalComponent } from "../join-modal/join-modal.component";
+import { JoinModalComponent } from "../../page/mainpage/join-modal/join-modal.component";
 import { JwtHelperService } from '@auth0/angular-jwt';
-import { UserDataModalComponent } from '../user-data-modal/user-data-modal.component';
+import { UserDataModalComponent } from '../../page/mainpage/mypage/mypage-update-modal/user-data-modal.component';
 
 @Component({
   selector: 'app-top-bar',
